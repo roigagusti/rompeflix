@@ -5,11 +5,11 @@
             
             {% for item in sliderMain -%}
             <div class="single-hero-slider-wrap single-animation-wrap slider-height-hm4 bg-image-hm4 slider-bg-color-black d-flex align-items-center slider-bg-position-1 bg-black"
-            style="background-image:url(static/images/slider/slider-hm4-1.jpg);">
+            style="background-image:url({{ item['image'] }});">
                 <div class="slider-content-hm4 slider-animated">
                     <h1 class="title animated">{{ item['title'] }}</h1>
                     <div class="sub-title-time-wrap">
-                        <span class="sub-title animated">Feel Good</span>
+                        <span class="sub-title animated">{{ item['id'] }}</span>
                         <span class="time animated">{{ item['duration'] }} minutes</span>
                     </div>
                     <div class="slider-button">

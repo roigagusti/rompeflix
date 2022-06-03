@@ -4,9 +4,11 @@ import json
 #user: Agustí
 #app: Airtable
 class Demo():
-    def __init__(self, title, image, video, release, tag, main_style, age, duration, status):    
+    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status):
+        self.id = atid  
         self.title = title
         self.image =  image
+        self.cover = cover
         self.video = video
         self.release_date = release
         self.tag = tag
@@ -18,7 +20,7 @@ class Demo():
 class Airtable():
     def __init__(self):
         self.token = 'keyVBM9rXFpJNDEIU'
-        self.base_id = 'applVLtXI9jhnWeIB'a
+        self.base_id = 'applVLtXI9jhnWeIB'
 
     def list(self,maxrecords,formula,tag):
         url = 'https://api.airtable.com/v0/applVLtXI9jhnWeIB/demodays'
@@ -34,7 +36,7 @@ class Airtable():
         data = response.json()
         records = []
         for record in data['records']:
-            demo = Demo(record['fields']['title'],record['fields']['image'],record['fields']['video'],record['fields']['release_date'],record['fields']['tag'],record['fields']['main_style'],record['fields']['age'],record['fields']['duration'],record['fields']['status'])
+            demo = Demo(record['id'],record['fields']['title'],record['fields']['main_image'],record['fields']['cover_image'],record['fields']['video'],record['fields']['release_date'],record['fields']['tag'],record['fields']['main_style'],record['fields']['age'],record['fields']['duration'],record['fields']['status'])
             records.append(demo)
         return records
 
