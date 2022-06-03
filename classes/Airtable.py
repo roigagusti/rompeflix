@@ -18,7 +18,7 @@ class Demo():
 class Airtable():
     def __init__(self):
         self.token = 'keyVBM9rXFpJNDEIU'
-        self.base_id = 'applVLtXI9jhnWeIB'
+        self.base_id = 'applVLtXI9jhnWeIB'a
 
     def list(self,maxrecords,formula,tag):
         url = 'https://api.airtable.com/v0/applVLtXI9jhnWeIB/demodays'
