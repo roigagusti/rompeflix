@@ -1,0 +1,64 @@
+/*
+* Title: Rempeflix
+* Author: 011h
+* Template: Netflix
+* Version: 0.1
+* Copyright 2022 011h
+* Url: https://www.rompeflix.ml
+
+
+Content table
+--------------
+01. Correccions
+02. Footer
+
+
+
+
+/* ----- 01. Correccions ----- */
+.Watch-list-btn{
+    display: none !important;
+}
+/* ----- 02. Footer ----- */
+.footer{
+    width: 100%;
+    background: #000;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 300;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+.footer ul{
+    list-style: none;
+}
+.footer a{
+    color: #969696;
+}
+.footer a:hover, .titol a:hover{
+    color: #a00000;
+}
+.logo-footer {
+    max-width: 80%;
+    display: initial;
+}
+.footer-titol{
+    margin-bottom: 12px;
+}
+.footer-titol a{
+    color: #fff !important;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.footer-message{
+    display: block;
+    color: #6e6e6e;
+    font-size: 0.9em;
+    margin-top: -5px;
+    margin-left: 20px;
+}
+.copyright{
+    color: #969696;
+    text-align: center;
+    padding-top: 20px;
+}
