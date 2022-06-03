@@ -1,34 +1,23 @@
 <div class="slider-area bg-black">
     <div class="container-fluid p-0">
         <div class="hero-slider-four dot-style-1 nav-style-1">
-
+            
+            
+            {% for item in sliderMain -%}
             <div class="single-hero-slider-wrap single-animation-wrap slider-height-hm4 bg-image-hm4 slider-bg-color-black d-flex align-items-center slider-bg-position-1 bg-black"
             style="background-image:url(static/images/slider/slider-hm4-1.jpg);">
                 <div class="slider-content-hm4 slider-animated">
-                    <h1 class="title animated">Out Of Network </h1>
+                    <h1 class="title animated">{{ item['title'] }}</h1>
                     <div class="sub-title-time-wrap">
                         <span class="sub-title animated">Feel Good</span>
-                        <span class="time animated">45 Mins</span>
+                        <span class="time animated">{{ item['duration'] }} minutes</span>
                     </div>
                     <div class="slider-button">
                         <a href="{{ url_for('movieDetails') }}" class="btn-style-hm4 animated">Watch Now</a>
                     </div>
                 </div>
             </div>
-            <div class="single-hero-slider-wrap single-animation-wrap slider-height-hm4 bg-image-hm4 slider-bg-color-black d-flex align-items-center slider-bg-position-3 bg-black"
-            style="background-image:url(static/images/slider/slider-hm4-2.jpg);">
-                <div class="slider-content-hm4 slider-animated">
-                    <h1 class="title animated">The Love of Mind </h1>
-                    <div class="sub-title-time-wrap">
-                        <span class="sub-title animated">Romantic Movie</span>
-                        <span class="time animated">1 hr 45 Mins</span>
-                    </div>
-                    <div class="slider-button">
-                        <a href="{{ url_for('movieDetails') }}" class="btn-style-hm4 animated">Watch Now</a>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
 
         </div>
     </div>
