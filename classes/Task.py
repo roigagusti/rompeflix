@@ -1,5 +1,5 @@
 
-from classes.Board import Boards
+import requests
 from classes.DataBase import Db
 
 

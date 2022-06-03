@@ -1,0 +1,39 @@
+/*
+* Title: Rempeflix
+* Author: 011h
+* Template: Netflix
+* Version: 0.1
+* Copyright 2022 011h
+* Url: https://www.rompeflix.ml
+
+
+Content table
+--------------
+1. Devices < width: 1199px
+2. Devices < width: 1060px
+3. Devices < width: 991px
+4. Devices < width: 767px
+5. Devices < width: 460px
+6. Responsive menu
+
+/* ----- 1. Devices < width: 1199px ----- */
+@media (max-width: 1199px) {
+}
+
+/* ----- 2. Devices < width: 1060px ----- */
+@media (max-width: 1060px){
+}
+
+/* ----- 3. Devices < width: 991px ----- */
+@media (max-width: 991px) {
+}
+
+/* ----- 4. Devices < width: 767px ----- */
+@media (max-width: 767px) {
+}
+
+/* ----- 5. Devices < width: 460px ----- */
+@media (max-width: 460px) {
+}
+
+/* ----- 6. Responsive menu ----- */
