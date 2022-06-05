@@ -49,8 +49,8 @@
                         <i class="zmdi zmdi-close s-close"></i>
                     </a>
                     <div class="search-wrap-2">
-                        <form action="#">
-                            <input placeholder="Search" type="text">
+                        <form action="{{ url_for('index') }}" method="get">
+                            <input placeholder="Search" type="text" name="q" id="q">
                             <button class="button-search"><i class="zmdi zmdi-search"></i></button>
                         </form>
                     </div>

@@ -33,13 +33,26 @@
         <!-- Slider -->
         {% include 'sections/slider-main.html' %}
 
+        <!-- Slider: Búsqueda -->
+        {% if query -%}
+            {% set content = query %}
+            {% set title = 'Search results' %}
+            {% include 'sections/slider-content.html' %}
+        {% endif %}
+
         <!-- Slider: Latest Movies -->
+        {% set content = lastReleases %}
+        {% set title = 'Last releases' %}
         {% include 'sections/slider-content.html' %}
 
-        <!-- Slider: Latest Horror Series -->
+        <!-- Slider: Latest Horror series -->
+        {% set content = horrorSeries %}
+        {% set title = 'Horror series' %}
         {% include 'sections/slider-content.html' %}
 
         <!-- Slider: Latest Old Movies -->
+        {% set content = oldMovies %}
+        {% set title = 'Old Movies' %}
         {% include 'sections/slider-content.html' %}
     </div>
 

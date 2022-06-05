@@ -1,6 +1,8 @@
-import requests
-import json
+import time
+import datetime
 
-response_API = requests.get('https://www.askpython.com/', headers={'User-Agent': 'Mozilla/5.0'})
-data = response_API.text
-json.loads(data)
+def dateToYear(numero):
+    string = str(numero)
+    date = datetime.datetime.strptime(string,"%Y-%m-%d")
+    year = date.strftime("%m.%Y")
+    return year

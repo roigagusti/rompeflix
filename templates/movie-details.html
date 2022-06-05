@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css") }}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/responsive.css") }}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/video.css") }}" media="screen">
 
     <!-- Scripts Libraries -->
     <!-- Scripts custom -->
@@ -38,41 +39,42 @@
             <div class="container">
                 <div class="movie-details-video-content-wrap">
                     <div class="video-wrap">
-                        <video controls loop="loop" poster="{{ url_for("static", filename="images/bg/bg-3.png") }}">
-                            <source src="{{ url_for("static", filename="video/video.mp4") }}" type="video/mp4">
-                        </video>
+                        <iframe width="100%" height="400" src="{{ data['video'] }}"
+                        allowfullscreen style="border:none;"></iframe>
                     </div>
                     <div class="movie-details-content">
                         <div class="movie-details-info">
                             <ul>
-                                <li><span>Director: </span>Brent Robinson</li>
-                                <li><span>Starring: </span> Sangel Juergens, Joel McGill, Sandra Keller, Roy Johnson, Jerry Matherne, Cheryl Pope, Edward D. Kivi </li>
+                                <li><span>Director: </span>
+                                    {% set i = 0 -%}
+                                    {% for item in data['directors'] -%}
+                                        {{ item }}
+                                        {% if not loop.last %}
+                                            ,
+                                        {% endif %}
+                                    {% endfor %}
+                                </li>
+                                <li><span>Starring: </span>
+                                    {% set i = 0 -%}
+                                    {% for item in data['staff'] -%}
+                                        {{ item }}
+                                        {% if not loop.last %}
+                                            ,
+                                        {% endif %}
+                                    {% endfor %}
+                                </li>
                             </ul>
                         </div>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text predefined chunks as necessary.</p>
-                        <div class="like-share-wrap">
-                            <div class="social-share-wrap">
-                                <span>Share:</span>
-                                <div class="social-style-1">
-                                    <a class="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                    <a class="pinterest" href="#"><i class="zmdi zmdi-pinterest"></i></a>
-                                    <a class="linkedin" href="#"><i class="zmdi zmdi-linkedin"></i></a>
-                                    <a class="instagram" href="#"><i class="zmdi zmdi-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="like-dislike-wrap">
-                                <button class="like-dislike-style"><i class="zmdi zmdi-thumb-up"></i></button>
-                                <button class="like-dislike-style"><i class="zmdi zmdi-thumb-down"></i></button>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Recommended for you -->
-        {% include 'sections/recommended-for-you.html' %}
+        {# include 'sections/recommended-for-you.html' #}
     </div>
 
     <!-- Footer -->

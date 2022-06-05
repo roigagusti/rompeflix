@@ -9,11 +9,11 @@
                 <div class="slider-content-hm4 slider-animated">
                     <h1 class="title animated">{{ item['title'] }}</h1>
                     <div class="sub-title-time-wrap">
-                        <span class="sub-title animated">{{ item['id'] }}</span>
+                        <span class="sub-title animated">{{ item['main_style'] }}</span>
                         <span class="time animated">{{ item['duration'] }} minutes</span>
                     </div>
                     <div class="slider-button">
-                        <a href="{{ url_for('movieDetails') }}" class="btn-style-hm4 animated">Watch Now</a>
+                        <a href="{{ url_for('movieDetails', id=item['id']) }}" class="btn-style-hm4 animated">Watch Now</a>
                     </div>
                 </div>
             </div>

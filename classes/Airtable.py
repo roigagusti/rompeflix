@@ -4,7 +4,7 @@ import json
 #user: Agustí
 #app: Airtable
 class Demo():
-    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status):
+    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status, quality, directors, staff, description, season):
         self.id = atid  
         self.title = title
         self.image =  image
@@ -16,6 +16,11 @@ class Demo():
         self.age = age
         self.duration = duration
         self.status = status
+        self.quality = quality
+        self.directors = directors
+        self.staff = staff
+        self.description = description
+        self.season = season
 
 class Airtable():
     def __init__(self):
@@ -36,7 +41,24 @@ class Airtable():
         data = response.json()
         records = []
         for record in data['records']:
-            demo = Demo(record['id'],record['fields']['title'],record['fields']['main_image'],record['fields']['cover_image'],record['fields']['video'],record['fields']['release_date'],record['fields']['tag'],record['fields']['main_style'],record['fields']['age'],record['fields']['duration'],record['fields']['status'])
+            demo = Demo(
+                record['id'],
+                record['fields']['title'],
+                record['fields']['main_image'],
+                record['fields']['cover_image'],
+                record['fields']['video'],
+                record['fields']['release_date'],
+                record['fields']['tag'],
+                record['fields']['main_style'],
+                record['fields']['age'],
+                record['fields']['duration'],
+                record['fields']['status'],
+                record['fields']['quality'],
+                record['fields']['name (from Directors)'],
+                record['fields']['name (from staff)'],
+                record['fields']['description'],
+                record['fields']['season']
+            )
             records.append(demo)
         return records
 
@@ -45,6 +67,52 @@ class Airtable():
         key = 'Bearer '+ self.token
         header = {'Authorization' : key}
         response = requests.get(url,headers=header)
-        data = response.json()
-        demo = Demo(data['fields']['title'],data['fields']['image'],data['fields']['video'],data['fields']['release_date'],data['fields']['tag'],data['fields']['main_style'],data['fields']['age'],data['fields']['duration'],data['fields']['status'])
+        record = response.json()
+        demo = Demo(
+            record['id'],
+            record['fields']['title'],
+            record['fields']['main_image'],
+            record['fields']['cover_image'],
+            record['fields']['video'],
+            record['fields']['release_date'],
+            record['fields']['tag'],
+            record['fields']['main_style'],
+            record['fields']['age'],
+            record['fields']['duration'],
+            record['fields']['status'],
+            record['fields']['quality'],
+            record['fields']['name (from Directors)'],
+            record['fields']['name (from staff)'],
+            record['fields']['description'],
+                record['fields']['season']
+        )
         return demo
+    
+    def search(self,parameter,data):
+        url = "https://api.airtable.com/v0/"+ self.base_id +"/demodays?filterByFormula={" + parameter + "}='" + data + "'"
+        key = 'Bearer '+ self.token
+        header = {'Authorization' : key}
+        response = requests.get(url,headers=header)
+        data = response.json()
+        records = []
+        for record in data['records']:
+            demo = Demo(
+                record['id'],
+                record['fields']['title'],
+                record['fields']['main_image'],
+                record['fields']['cover_image'],
+                record['fields']['video'],
+                record['fields']['release_date'],
+                record['fields']['tag'],
+                record['fields']['main_style'],
+                record['fields']['age'],
+                record['fields']['duration'],
+                record['fields']['status'],
+                record['fields']['quality'],
+                record['fields']['name (from Directors)'],
+                record['fields']['name (from staff)'],
+                record['fields']['description'],
+                record['fields']['season']
+            )
+            records.append(demo)
+        return records

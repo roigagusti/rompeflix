@@ -19,6 +19,11 @@ Content table
 .Watch-list-btn{
     display: none !important;
 }
+.movie-wrap .movie-content{
+    opacity: 1 !important;
+    visibility: inherit !important;
+    padding: 35px !important;
+}
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;

@@ -30,6 +30,30 @@ Content table
 
 /* ----- 4. Devices < width: 767px ----- */
 @media (max-width: 767px) {
+    .header-wrap.header-netflix-style {
+        display: flex !important;
+    }
+    .header-netflix-style .logo-menu-wrap {
+        -webkit-box-pack: left !important;
+        -ms-flex-pack: left !important;
+        justify-content: left !important;
+    }
+    .search-wrap-2.search-open {
+        left: auto !important;
+        right: 0 !important;
+    }
+    .logo-footer{
+        display: none;
+    }
+    .footer{
+        text-align: center;
+    }
+    .movie-wrap .movie-content {
+        padding: 30px !important;
+    }
+    .movie-content .movie-btn{
+        display:none !important;
+    }
 }
 
 /* ----- 5. Devices < width: 460px ----- */
