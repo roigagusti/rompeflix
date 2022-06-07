@@ -3,6 +3,6 @@
 
 # ignore ALL files in ANY directory named ...
 env
-templates/[suport]
+templates/[suport]/
 app.py
 app.pyc
