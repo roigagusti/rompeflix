@@ -3,7 +3,7 @@
 
 <head>
     <!-- Meta data -->
-    {% include 'sections/pl-metadata.html' %}
+    {% include 'sections/pl-meta.html' %}
 
     <!-- Títol i Favicons -->
     <title>Planning. Quarter</title>
@@ -19,100 +19,127 @@
     <link href="//app.cuantime.es/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
 
     <!-- CSS Custom -->
-    <link rel="stylesheet" href="{{ url_for("static-planning", filename="css/style.css") }}">
-    <link rel="stylesheet" href="{{ url_for("static-planning", filename="css/responsive.css") }}">
+    <link rel="stylesheet" href="{{ url_for("planning", filename="css/style.css") }}">
+    <link rel="stylesheet" href="{{ url_for("planning", filename="css/responsive.css") }}">
+    <link rel="stylesheet" href="{{ url_for("planning", filename="css/bootstrap-table-fixed-columns.css") }}">
 
     <!-- Scripts Libraries -->
+    <link rel="stylesheet" href="{{ url_for("planning", filename="js/bootstrap-table-fixed-columns.js") }}">
     <!-- Scripts custom -->
 </head>
 
 
 <body>
     <div id="layout-wrapper">
-        <!-- Header -->
-        {% include 'sections/pl-header.html' %}
-
-        <!-- Sidebar -->
-        {% include 'sections/pl-sidebar-menu.html' %}
 
         <!-- ============================================================== -->
         <!-- PÀGINA INICIAL -->
         <!-- ============================================================== -->
-        <div class="main-content">
+        <div class="container-fluid">
 
-            <div class="page-content">
-                <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4" style="margin-top:50px">
+                    <div> </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
 
-                    <!-- Zona superior de títol -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0">Planning</h4>
+                            <style>
+                                table {
+                                    der-collapse: separate;
+                                border-spacing: 0;
+                                }
 
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="index.php">Cuantime</a></li>
-                                        <li class="breadcrumb-item active">Expedients</li>
-                                    </ol>
-                                </div>
+                                td,
+                                th {
+                                    margin: 0;
+                                    border-top-width: 0px;
+                                }
+                                .table-planificacio {
+                                    font-size:0.8em;
+                                    line-height:1;
+                                    overflow-x: scroll;
+                                    margin-left: 5em;
+                                    /*overflow-y: visible;
+                                    padding: 0;*/
+                                }
+                                .table-planificacio td, .table-planificacio th{
+                                    padding:0.5rem;
+                                }
+                                .headcol {
+                                    position: absolute;
+                                    width: 120px;
+                                    left: 0;
+                                    top: auto;
+                                    border-top-width: 1px;
+                                    margin-top: -1px;
+                                }
+                            </style>
 
+                            <!-- taula-fixe -->
+                            <div class="table-responsive table-planificacio col-lg-12">
+                                <table class="table table-centered table-nowrap mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th width="120" class="headcol">Iniciativa</th>
+                                            <th width="150">Squad</th>
+                                            <th width="50">#</th>
+                                            <th width="50">Owner</th>
+                                            <th width="300">Tarea</th>
+                                            <th width="100">Q2-S4</th>
+                                            <th width="100">Q2-S5</th>
+                                            <th width="100">Q2-S6</th>
+                                            <th width="100">Q3-S1</th>
+                                            <th width="100">Q3-S2</th>
+                                            <th width="100">Q3-S3</th>
+                                            <th width="100">Q3-S4</th>
+                                            <th width="100">Q3-S5</th>
+                                            <th width="100">Q3-S6</th>
+                                            <th width="100">Q4-S1</th>
+                                            <th width="100">Q4-S2</th>
+                                            <th width="100">Q4-S3</th>
+                                            <th width="100">Q4-S4</th>
+                                            <th width="100">Q4-S5</th>
+                                            <th width="100">Q4-S6</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in tasks -%}
+                                        <tr>
+                                            <td class="headcol">{{ item['iniciativa'] }}</td>
+                                            <td>{{ item['squad'] }}</td>
+                                            <td>{{ item['pec_id'] }}</td>
+                                            <td>{{ item['owner'] }}</td>
+                                            <td>{{ item['tarea'] }}</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div>
-                                <button type="button" class="btn btn-success waves-effect waves-light mb-3" data-toggle="modal" data-target="#addExp"><i class="mdi mdi-plus mr-1"></i> Crear planning</button>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-
-                                    <div class="table-responsive" style="min-height:300px">
-                                        <table class="table table-centered table-nowrap mb-0">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th>Número</th>
-                                                    <th>Número</th>
-                                                    <th>Número</th>
-                                                    <th>Número</th>
-                                                    <th>Número</th>
-                                                    <th>Número</th>
-                                                    <th>Número</th>
-                                                    <th>Número</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><strong>------</strong></td>
-                                                    <td><span class="badge badge-pill badge-soft-secondary font-size-12">Pendent</span></td>
-                                                    <td>El primer</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- end table-responsive -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end row -->
-
-
-                </div> <!-- container-fluid -->
+                </div>
             </div>
-            <!-- End Page-content -->
+            <!-- end row -->
 
 
-            {% include 'sections/pl-footer.html' %}
-        </div>
+        </div> <!-- container-fluid -->
         <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
