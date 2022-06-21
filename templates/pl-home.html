@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta data -->
+    {% include 'sections/pl-metadata.html' %}
+
+    <!-- Títol i Favicons -->
+    <title>Planning. Quarter</title>
+
+    <!-- CSS Libraries -->
+    <link href="//app.cuantime.es/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="//app.cuantime.es/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="//app.cuantime.es/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+    <link href="//app.cuantime.es/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="//app.cuantime.es/assets/libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="//app.cuantime.es/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="//app.cuantime.es/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+
+    <!-- CSS Custom -->
+    <link rel="stylesheet" href="{{ url_for("static-planning", filename="css/style.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static-planning", filename="css/responsive.css") }}">
+
+    <!-- Scripts Libraries -->
+    <!-- Scripts custom -->
+</head>
+
+
+<body>
+    <div id="layout-wrapper">
+        <!-- Header -->
+        {% include 'sections/pl-header.html' %}
+
+        <!-- Sidebar -->
+        {% include 'sections/pl-sidebar-menu.html' %}
+
+        <!-- ============================================================== -->
+        <!-- PÀGINA INICIAL -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- Zona superior de títol -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0">Planning</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="index.php">Cuantime</a></li>
+                                        <li class="breadcrumb-item active">Expedients</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <button type="button" class="btn btn-success waves-effect waves-light mb-3" data-toggle="modal" data-target="#addExp"><i class="mdi mdi-plus mr-1"></i> Crear planning</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div class="table-responsive" style="min-height:300px">
+                                        <table class="table table-centered table-nowrap mb-0">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Número</th>
+                                                    <th>Número</th>
+                                                    <th>Número</th>
+                                                    <th>Número</th>
+                                                    <th>Número</th>
+                                                    <th>Número</th>
+                                                    <th>Número</th>
+                                                    <th>Número</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>------</strong></td>
+                                                    <td><span class="badge badge-pill badge-soft-secondary font-size-12">Pendent</span></td>
+                                                    <td>El primer</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+
+            {% include 'sections/pl-footer.html' %}
+        </div>
+        <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+
+<!-- JavaScripts basics -->
+<script src="//app.cuantime.es/assets/libs/jquery/jquery.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/node-waves/waves.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+<script src="//app.cuantime.es/assets/libs/apexcharts/apexcharts.min.js"></script>
+<script src="//app.cuantime.es/assets/js/pages/dashboard.init.js"></script>
+<script src="//app.cuantime.es/assets/js/pages/form-advanced.init.js"></script>
+<script src="//app.cuantime.es/assets/libs/select2/js/select2.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+<script src="//app.cuantime.es/assets/js/pages/table-responsive.init.js"></script>
+<!-- JavaScripts custom -->
+<script src="//app.cuantime.es/assets/js/app.js"></script>
+<!-- Scripts custom -->
+
+</body>
+</html>
