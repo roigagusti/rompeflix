@@ -1,0 +1,94 @@
+<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myModalLabel">Crear tarea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="conexiones/administracio.php?action=addExp" >
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="control-label">Iniciativa</label>
+                                <select class="form-control" name="initiative">
+                                    <option value="2">En proceso</option>
+                                    <option value="1">Pausa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Squad</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="squad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Reducir PEC</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="pec_id">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label>Tarea</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="task">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="control-label">Owner</label>
+                                <select class="form-control" name="owner">
+                                    <option value="CA">Cecilia Alonso</option>
+                                    <option value="JM">Jordi Malet</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Sprint inicial</label>
+                                <div class="input-group">
+                                    <select class="form-control" name="sprint_start">
+                                        <option value="S1.W1">Sprint 1 - W1</option>
+                                        <option value="S1.W2">Sprint 1 - W2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Sprint final</label>
+                                <div class="input-group">
+                                    <select class="form-control" name="sprint_end">
+                                        <option value="S1.W1">Sprint 1 - W1</option>
+                                        <option value="S1.W2">Sprint 1 - W2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary btn-011h waves-effect waves-light">Crear</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

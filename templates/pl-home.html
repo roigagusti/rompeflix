@@ -36,22 +36,44 @@
         <!-- PÀGINA INICIAL -->
         <!-- ============================================================== -->
         <div class="container-fluid">
+            <div class="row" style="margin-top:20px">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0">Planificació</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="#">011h</a></li>
+                                <li class="breadcrumb-item active">Planificació</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
-                <div class="col-md-4" style="margin-top:50px">
-                    <div> </div>
+                <div class="col-md-4">
+                    <div>
+                        <button type="button" class="btn btn-success btn-011h waves-effect waves-light mb-3" data-toggle="modal" data-target="#addTask">Add task</button>
+                    </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
 
                             <style>
+                                .btn-011h{
+                                    background-color: #497767 !important;
+                                    border-color: #497767 !important;
+                                }
                                 .table-planificacio {
                                     font-size:0.8em;
-                                    line-height:1;
+                                    line-height:0.5rem;
                                 }
                                 .table-planificacio td, .table-planificacio th{
                                     padding:0.5rem;
+                                    text-align:center;
                                 }
                                 .timeline{
                                     overflow-x: scroll;
@@ -61,6 +83,7 @@
                                 .headcol{
                                     position: absolute;
                                     top: auto;
+                                    text-align:left !important;
                                 }
                                 .initiative{
                                     left:0;
@@ -82,6 +105,15 @@
                                     left:470px;
                                     width: 600px;
                                 }
+                                .endSprint{
+                                    border-right:1px solid #ddd !important;
+                                }
+                                .color-owner{
+                                    background-color: #C9E3CE;
+                                }
+                                .subhead th{
+                                    font-weight:300;
+                                }
                             </style>
 
                             <!-- taula-fixe -->
@@ -95,47 +127,52 @@
                                             <th class="headcol pec">#</th>
                                             <th class="headcol owner">Owner</th>
                                             <th class="headcol tarea">Tarea</th>
-                                            <th>Q2-S4</th>
-                                            <th>Q2-S5</th>
-                                            <th>Q2-S6</th>
-                                            <th>Q3-S1</th>
-                                            <th>Q3-S2</th>
-                                            <th>Q3-S3</th>
-                                            <th>Q3-S4</th>
-                                            <th>Q3-S5</th>
-                                            <th>Q3-S6</th>
-                                            <th>Q4-S1</th>
-                                            <th>Q4-S2</th>
-                                            <th>Q4-S3</th>
-                                            <th>Q4-S4</th>
-                                            <th>Q4-S5</th>
-                                            <th>Q4-S6</th>
+                                            {% for sprint in sprints %}
+                                                {% if loop.index % 2 == 0 %}
+                                                    <th class="endSprint"></th>
+                                                {% else %}
+                                                    <th>S{{ sprint['sprint'] }} - {{ sprint['quarter'] }}</th>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </tr>
+                                        <tr class="subhead">
+                                            <th class="headcol initiative">↓</th>
+                                            <th class="headcol squad">↓</th>
+                                            <th class="headcol pec">↓</th>
+                                            <th class="headcol owner">↓</th>
+                                            <th class="headcol tarea">↓</th>
+                                            {% for sprint in sprints %}
+                                                {% if loop.index % 2 == 0 %}<th class="endSprint">{% else %}<th>{% endif %}
+                                                {{ sprint['date'] }}</th>
+                                            {% endfor %}
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for item in tasks -%}
-                                        <tr>
-                                            <td class="headcol initiative">{{ item['iniciativa'] }}</td>
-                                            <td class="headcol squad">{{ item['squad'] }}</td>
-                                            <td class="headcol pec">{{ item['pec_id'] }}</td>
-                                            <td class="headcol owner">{{ item['owner'] }}</td>
-                                            <td class="headcol tarea">{{ item['tarea'] }}</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
+                                        {% for task in tasks -%}
+                                            <tr>
+                                                <td class="headcol initiative">{{ task['iniciativa'] }}</td>
+                                                <td class="headcol squad">{{ task['squad'] }}</td>
+                                                <td class="headcol pec">{{ task['pec_id'] }}</td>
+                                                <td class="headcol owner">{{ task['owner'] }}</td>
+                                                <td class="headcol tarea">{{ task['tarea'] }}</td>
+                                                {% for i in sprints %}
+                                                    {% if loop.index % 2 == 0 %} 
+                                                        {% if task['start'] <= sprints[loop.index-1]['dateRaw'] <= task['end'] %}
+                                                            <td class="endSprint color-owner">
+                                                        {% else %}
+                                                            <td class="endSprint">
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if task['start'] <= sprints[loop.index-1]['dateRaw'] <= task['end'] %}
+                                                            <td class="color-owner">
+                                                        {% else %}
+                                                            <td>
+                                                        {% endif %}
+                                                    {% endif %}</td>
+                                                {% endfor %}
+                                            </tr>
+                                            {% set lastInitiative = task['iniciativa'] %}
                                         {% endfor %}
                                     </tbody>
                                 </table>
@@ -146,6 +183,7 @@
                 </div>
             </div>
             <!-- end row -->
+            {% include 'sections/plModal-addTask.html' %}
 
 
         </div> <!-- container-fluid -->
