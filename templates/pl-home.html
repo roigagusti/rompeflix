@@ -114,6 +114,9 @@
                                 .subhead th{
                                     font-weight:300;
                                 }
+                                .inithead td{
+                                    padding-top: 20px;
+                                }
                             </style>
 
                             <!-- taula-fixe -->
@@ -150,6 +153,29 @@
                                     </thead>
                                     <tbody>
                                         {% for task in tasks -%}
+                                            {% if tasks[loop.index-2]['iniciativa'] != task['iniciativa'] %}
+                                            <tr class="inithead">
+                                                <td class="headcol initiative"><strong>{{ task['iniciativa'] }}</strong></td>
+                                                <td class="headcol squad"></td>
+                                                <td class="headcol pec"></td>
+                                                <td class="headcol owner"></td>
+                                                <td class="headcol tarea"></td>
+                                                {% for i in sprints %}
+                                                    {% if loop.index % 2 == 0 %} 
+                                                        {% if task['start'] <= sprints[loop.index-1]['dateRaw'] <= task['end'] %}
+                                                            <td class="endSprint">
+                                                        {% else %}
+                                                            <td class="endSprint">
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if task['start'] <= sprints[loop.index-1]['dateRaw'] <= task['end'] %}
+                                                            <td>
+                                                        {% else %}
+                                                            <td>
+                                                        {% endif %}
+                                                    {% endif %}</td>
+                                                {% endfor %}
+                                            {% endif %}
                                             <tr>
                                                 <td class="headcol initiative">{{ task['iniciativa'] }}</td>
                                                 <td class="headcol squad">{{ task['squad'] }}</td>
@@ -172,7 +198,7 @@
                                                     {% endif %}</td>
                                                 {% endfor %}
                                             </tr>
-                                            {% set lastInitiative = task['iniciativa'] %}
+                                            {% set lastInitiative = task['iniciativa'] -%}
                                         {% endfor %}
                                     </tbody>
                                 </table>

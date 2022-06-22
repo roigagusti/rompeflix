@@ -75,7 +75,8 @@ class Tasques():
                 timestampDate(end)
             )
             records.append(tasca)
-        
+        records.sort(key=lambda x: x.pec_id) 
+        records.sort(key=lambda x: x.squad) 
         records.sort(key=lambda x: x.iniciativa)    
         return records
 
