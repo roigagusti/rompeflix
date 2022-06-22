@@ -46,72 +46,80 @@
                         <div class="card-body">
 
                             <style>
-                                table {
-                                    der-collapse: separate;
-                                border-spacing: 0;
-                                }
-
-                                td,
-                                th {
-                                    margin: 0;
-                                    border-top-width: 0px;
-                                }
                                 .table-planificacio {
                                     font-size:0.8em;
                                     line-height:1;
-                                    overflow-x: scroll;
-                                    margin-left: 5em;
-                                    /*overflow-y: visible;
-                                    padding: 0;*/
                                 }
                                 .table-planificacio td, .table-planificacio th{
                                     padding:0.5rem;
                                 }
-                                .headcol {
+                                .timeline{
+                                    overflow-x: scroll;
+                                    margin-left: 1070px;
+                                }
+                                
+                                .headcol{
                                     position: absolute;
-                                    width: 120px;
-                                    left: 0;
                                     top: auto;
-                                    border-top-width: 1px;
-                                    margin-top: -1px;
+                                }
+                                .initiative{
+                                    left:0;
+                                    width: 200px;
+                                }
+                                .squad{
+                                    left:200px;
+                                    width: 150px;
+                                }
+                                .pec{
+                                    left:350px;
+                                    width: 60px;
+                                }
+                                .owner{
+                                    left:410px;
+                                    width: 60px;
+                                }
+                                .tarea{
+                                    left:470px;
+                                    width: 600px;
                                 }
                             </style>
 
                             <!-- taula-fixe -->
                             <div class="table-responsive table-planificacio col-lg-12">
+                                <div class="timeline">
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th width="120" class="headcol">Iniciativa</th>
-                                            <th width="150">Squad</th>
-                                            <th width="50">#</th>
-                                            <th width="50">Owner</th>
-                                            <th width="300">Tarea</th>
-                                            <th width="100">Q2-S4</th>
-                                            <th width="100">Q2-S5</th>
-                                            <th width="100">Q2-S6</th>
-                                            <th width="100">Q3-S1</th>
-                                            <th width="100">Q3-S2</th>
-                                            <th width="100">Q3-S3</th>
-                                            <th width="100">Q3-S4</th>
-                                            <th width="100">Q3-S5</th>
-                                            <th width="100">Q3-S6</th>
-                                            <th width="100">Q4-S1</th>
-                                            <th width="100">Q4-S2</th>
-                                            <th width="100">Q4-S3</th>
-                                            <th width="100">Q4-S4</th>
-                                            <th width="100">Q4-S5</th>
-                                            <th width="100">Q4-S6</th>
+                                            <th class="headcol initiative">Iniciativa</th>
+                                            <th class="headcol squad">Squad</th>
+                                            <th class="headcol pec">#</th>
+                                            <th class="headcol owner">Owner</th>
+                                            <th class="headcol tarea">Tarea</th>
+                                            <th>Q2-S4</th>
+                                            <th>Q2-S5</th>
+                                            <th>Q2-S6</th>
+                                            <th>Q3-S1</th>
+                                            <th>Q3-S2</th>
+                                            <th>Q3-S3</th>
+                                            <th>Q3-S4</th>
+                                            <th>Q3-S5</th>
+                                            <th>Q3-S6</th>
+                                            <th>Q4-S1</th>
+                                            <th>Q4-S2</th>
+                                            <th>Q4-S3</th>
+                                            <th>Q4-S4</th>
+                                            <th>Q4-S5</th>
+                                            <th>Q4-S6</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for item in tasks -%}
                                         <tr>
-                                            <td class="headcol">{{ item['iniciativa'] }}</td>
-                                            <td>{{ item['squad'] }}</td>
-                                            <td>{{ item['pec_id'] }}</td>
-                                            <td>{{ item['owner'] }}</td>
-                                            <td>{{ item['tarea'] }}</td>
+                                            <td class="headcol initiative">{{ item['iniciativa'] }}</td>
+                                            <td class="headcol squad">{{ item['squad'] }}</td>
+                                            <td class="headcol pec">{{ item['pec_id'] }}</td>
+                                            <td class="headcol owner">{{ item['owner'] }}</td>
+                                            <td class="headcol tarea">{{ item['tarea'] }}</td>
                                             <td>-</td>
                                             <td>-</td>
                                             <td>-</td>
@@ -131,6 +139,7 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         </div>
                     </div>
