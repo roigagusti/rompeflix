@@ -14,17 +14,25 @@
                             <div class="form-group">
                                 <label class="control-label">Iniciativa</label>
                                 <select class="form-control" name="initiative">
-                                    <option value="2">En proceso</option>
-                                    <option value="1">Pausa</option>
+                                    <option value="1">Fioresta - Prototipo</option>
+                                    <option value="2">Fioresta - Constructivo</option>
+                                    <option value="3">Fioresta - Piso piloto</option>
+                                    <option value="4">Casernes J - Prototipo</option>
+                                    <option value="5">Casernes J - Proyecto Ejecutivo</option>
+                                    <option value="6">Casernes J - Constructivo</option>
+                                    <option value="7">TGL - Prototipo</option>
+                                    <option value="8">Desarrollo SC</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Squad</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="squad">
-                                </div>
+                                <label class="control-label">Squad</label>
+                                <select class="form-control" name="squad">
+                                    <option value="1">Diseño de Sistemas</option>
+                                    <option value="2">Proyectos</option>
+                                    <option value="3">Diseño de Componentes</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -50,8 +58,9 @@
                             <div class="form-group">
                                 <label class="control-label">Owner</label>
                                 <select class="form-control" name="owner">
-                                    <option value="CA">Cecilia Alonso</option>
-                                    <option value="JM">Jordi Malet</option>
+                                    {% for habitant in habitants -%}
+                                        <option value="{{ habitant['short_name'] }}">{{ habitant['name'] }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -63,8 +72,9 @@
                                 <label>Sprint inicial</label>
                                 <div class="input-group">
                                     <select class="form-control" name="sprint_start">
-                                        <option value="S1.W1">Sprint 1 - W1</option>
-                                        <option value="S1.W2">Sprint 1 - W2</option>
+                                        {% for sprint in sprints -%}
+                                            <option value="{{ sprint['shortname'] }}">{{ sprint['shortname'] }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -74,8 +84,9 @@
                                 <label>Sprint final</label>
                                 <div class="input-group">
                                     <select class="form-control" name="sprint_end">
-                                        <option value="S1.W1">Sprint 1 - W1</option>
-                                        <option value="S1.W2">Sprint 1 - W2</option>
+                                        {% for sprint in sprints -%}
+                                            <option value="{{ sprint['shortname'] }}">{{ sprint['shortname'] }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
