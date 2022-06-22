@@ -1,0 +1,21 @@
+/*
+* Title: Style
+* Author: Aldasoro
+* Template: Aldasoro
+* Version: 1.0
+* Copyright 2021 Aldasoro Inc.
+* Url: https://www.aldasoro.ml
+
+
+Content table
+--------------
+1. Taula
+
+/* ----- 1. Taula ----- */
+.table-planificacio{
+    font-size: 0.8em;
+}
+.estatic{
+    width:100px;
+    position:fixed;
+}
