@@ -83,6 +83,8 @@
                                 .headcol{
                                     position: absolute;
                                     top: auto;
+                                }
+                                .text-left{
                                     text-align:left !important;
                                 }
                                 .initiative{
@@ -117,6 +119,33 @@
                                 .inithead td{
                                     padding-top: 20px;
                                 }
+                                .bg-nt-gray{
+                                    background-color: #EBECED;
+                                }
+                                .bg-nt-brown{
+                                    background-color: #E9E5E3;
+                                }
+                                .bg-nt-orange{
+                                    background-color: #FAEBDD;
+                                }
+                                .bg-nt-yellow{
+                                    background-color: #FBF3DB;
+                                }
+                                .bg-nt-green{
+                                    background-color: #DDEDEA;
+                                }
+                                .bg-nt-blue{
+                                    background-color: #DDEBF1;
+                                }
+                                .bg-nt-purple{
+                                    background-color: #EAE4F2;
+                                }
+                                .bg-nt-pink{
+                                    background-color: #F4DFEB;
+                                }
+                                .bg-nt-red{
+                                    background-color: #FBE4E4;
+                                }
                             </style>
 
                             <!-- taula-fixe -->
@@ -125,11 +154,11 @@
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th class="headcol initiative">Iniciativa</th>
-                                            <th class="headcol squad">Squad</th>
-                                            <th class="headcol pec">#</th>
-                                            <th class="headcol owner">Owner</th>
-                                            <th class="headcol tarea">Tarea</th>
+                                            <th class="headcol text-left initiative">Iniciativa</th>
+                                            <th class="headcol text-left squad">Squad</th>
+                                            <th class="headcol text-left pec">#</th>
+                                            <th class="headcol text-left owner">Owner</th>
+                                            <th class="headcol text-left tarea">Tarea</th>
                                             {% for sprint in sprints %}
                                                 {% if loop.index % 2 == 1 %}
                                                     <th class="endSprint"></th>
@@ -139,11 +168,11 @@
                                             {% endfor %}
                                         </tr>
                                         <tr class="subhead">
-                                            <th class="headcol initiative">↓</th>
-                                            <th class="headcol squad">↓</th>
-                                            <th class="headcol pec">↓</th>
-                                            <th class="headcol owner">↓</th>
-                                            <th class="headcol tarea">↓</th>
+                                            <th class="headcol text-left initiative">↓</th>
+                                            <th class="headcol text-left squad">↓</th>
+                                            <th class="headcol text-left pec">↓</th>
+                                            <th class="headcol text-left owner">↓</th>
+                                            <th class="headcol text-left tarea">↓</th>
                                             {% for sprint in sprints %}
                                                 {% if loop.index % 2 == 1 %}<th class="endSprint">{% else %}<th>{% endif %}
                                                 {{ sprint['date'] }}</th>
@@ -156,11 +185,11 @@
                                             {% if tasks[loop.index-2]['iniciativa'] != task['iniciativa'] %}
 
                                             <tr class="inithead">
-                                                <td class="headcol initiative"><strong>{{ task['iniciativa'] }}</strong></td>
-                                                <td class="headcol squad"></td>
-                                                <td class="headcol pec"></td>
+                                                <td class="headcol text-left initiative"><strong>{{ task['iniciativa'] }}</strong></td>
+                                                <td class="headcol text-left squad"></td>
+                                                <td class="headcol text-left pec"></td>
                                                 <td class="headcol owner"></td>
-                                                <td class="headcol tarea"></td>
+                                                <td class="headcol text-left tarea"></td>
                                                 {% for i in sprints %}
                                                     {% if loop.index % 2 == 1 %} 
                                                         {% if task['start'] <= sprints[loop.index-1]['dateRaw'] <= task['end'] %}
@@ -178,11 +207,22 @@
                                                 {% endfor %}
                                             {% endif %}
                                             <tr>
-                                                <td class="headcol initiative">{{ task['iniciativa'] }}</td>
-                                                <td class="headcol squad">{{ task['squad'] }}</td>
-                                                <td class="headcol pec">{{ task['pec_id'] }}</td>
-                                                <td class="headcol owner">{{ task['owner'] }}</td>
-                                                <td class="headcol tarea">{{ task['tarea'] }}</td>
+                                                <td class="headcol text-left initiative">{{ task['iniciativa'] }}</td>
+                                                <td class="headcol text-left squad">{{ task['squad'] }}</td>
+                                                <td class="headcol text-left pec">{{ task['pec_id'] }}</td>
+                                                <td class="headcol owner">
+                                                    <div class="dropdown">
+                                                        <a class="text-body  text-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true">{{ task['owner'] }}</a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            {% for habitant in habitants -%}
+                                                            <a class="dropdown-item" href="conexiones/rrhh.php?action=asignProject&amp;project=131&amp;id=0">{{ habitant['name'] }}</a>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                </td>
+                                                </td>
+                                                <td class="headcol text-left tarea">{{ task['tarea'] }}</td>
                                                 {% for i in sprints %}
                                                     {% if loop.index % 2 == 1 %} 
                                                         {% if task['start'] <= sprints[loop.index-1]['dateRaw'] <= task['end'] %}
