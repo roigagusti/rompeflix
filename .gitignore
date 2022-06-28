@@ -6,5 +6,11 @@ env/
 templates/[suport]/
 static/[suport]/
 app.py
-app.pyc
 prova.py
+static-planning/
+templates/pl-home.html
+templates/sections/pl-footer.html
+templates/sections/pl-header.html
+templates/sections/pl-meta.html
+templates/sections/pl-sidebar-menu.html
+templates/sections/plModal-addTask.html
