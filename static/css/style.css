@@ -24,6 +24,9 @@ Content table
     visibility: inherit !important;
     padding: 35px !important;
 }
+#scrollUp{
+    display: none !important;
+}
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;
