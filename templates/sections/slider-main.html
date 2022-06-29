@@ -5,7 +5,7 @@
             
             {% for item in sliderMain -%}
             <div class="single-hero-slider-wrap single-animation-wrap slider-height-hm4 bg-image-hm4 slider-bg-color-black d-flex align-items-center slider-bg-position-1 bg-black"
-            style="background-image:url({{ item['image'] }});">
+            style="background-image:url({{ item['image'] }});background-position:{{item['image_position']}}">
                 <div class="slider-content-hm4 slider-animated">
                     <h1 class="title animated">{{ item['title'] }}</h1>
                     <div class="sub-title-time-wrap">

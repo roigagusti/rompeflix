@@ -4,7 +4,7 @@ import json
 #user: Agustí
 #app: Airtable
 class Demo():
-    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status, quality, directors, staff, description, season):
+    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status, quality, directors, staff, description, season, image_position):
         self.id = atid  
         self.title = title
         self.image =  image
@@ -21,6 +21,7 @@ class Demo():
         self.staff = staff
         self.description = description
         self.season = season
+        self.image_position = image_position
 
 class Airtable():
     def __init__(self):
@@ -57,7 +58,8 @@ class Airtable():
                 record['fields']['name (from Directors)'],
                 record['fields']['name (from staff)'],
                 record['fields']['description'],
-                record['fields']['season']
+                record['fields']['season'],
+                record['fields']['main_image_position'],
             )
             records.append(demo)
         return records
@@ -84,7 +86,8 @@ class Airtable():
             record['fields']['name (from Directors)'],
             record['fields']['name (from staff)'],
             record['fields']['description'],
-                record['fields']['season']
+            record['fields']['season'],
+            record['fields']['main_image_position']
         )
         return demo
     
@@ -112,7 +115,8 @@ class Airtable():
                 record['fields']['name (from Directors)'],
                 record['fields']['name (from staff)'],
                 record['fields']['description'],
-                record['fields']['season']
+                record['fields']['season'],
+                record['fields']['main_image_position']
             )
             records.append(demo)
         return records
