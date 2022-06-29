@@ -27,6 +27,8 @@ Content table
 #scrollUp{
     display: none !important;
 }
+.slick-track{
+}
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;

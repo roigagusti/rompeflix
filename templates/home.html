@@ -34,8 +34,8 @@
         {% include 'sections/slider-main.html' %}
 
         <!-- Slider: Búsqueda -->
-        {% if query -%}
-            {% set content = query %}
+        {% if resposta|length > 0 -%}
+            {% set content = resposta %}
             {% set title = 'Search results' %}
             {% include 'sections/slider-content.html' %}
         {% endif %}
