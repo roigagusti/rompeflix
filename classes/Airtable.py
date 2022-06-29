@@ -4,7 +4,7 @@ import json
 #user: Agustí
 #app: Airtable
 class Demo():
-    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status, quality, directors, staff, description, season, image_position):
+    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status, quality, directors, staff, description1, description2, description3, season, image_position):
         self.id = atid  
         self.title = title
         self.image =  image
@@ -19,7 +19,9 @@ class Demo():
         self.quality = quality
         self.directors = directors
         self.staff = staff
-        self.description = description
+        self.description1 = description1
+        self.description2 = description2
+        self.description3 = description3
         self.season = season
         self.image_position = image_position
 
@@ -42,6 +44,14 @@ class Airtable():
         data = response.json()
         records = []
         for record in data['records']:
+            if 'description2' in record['fields']:
+                description2 = record['fields']['description2']
+            else:
+                description2 = ''
+            if 'description3' in record['fields']:
+                description3 = record['fields']['description3']
+            else:
+                description3 = ''
             demo = Demo(
                 record['id'],
                 record['fields']['title'],
@@ -57,7 +67,9 @@ class Airtable():
                 record['fields']['quality'],
                 record['fields']['name (from Directors)'],
                 record['fields']['name (from staff)'],
-                record['fields']['description'],
+                record['fields']['description1'],
+                description2,
+                description3,              
                 record['fields']['season'],
                 record['fields']['main_image_position'],
             )
@@ -70,6 +82,14 @@ class Airtable():
         header = {'Authorization' : key}
         response = requests.get(url,headers=header)
         record = response.json()
+        if 'description2' in record['fields']:
+            description2 = record['fields']['description2']
+        else:
+            description2 = ''
+        if 'description3' in record['fields']:
+            description3 = record['fields']['description3']
+        else:
+            description3 = ''
         demo = Demo(
             record['id'],
             record['fields']['title'],
@@ -85,7 +105,9 @@ class Airtable():
             record['fields']['quality'],
             record['fields']['name (from Directors)'],
             record['fields']['name (from staff)'],
-            record['fields']['description'],
+            record['fields']['description1'],
+            description2,
+            description3,
             record['fields']['season'],
             record['fields']['main_image_position']
         )
@@ -99,6 +121,14 @@ class Airtable():
         data = response.json()
         records = []
         for record in data['records']:
+            if 'description2' in record['fields']:
+                description2 = record['fields']['description2']
+            else:
+                description2 = ''
+            if 'description3' in record['fields']:
+                description3 = record['fields']['description3']
+            else:
+                description3 = ''
             demo = Demo(
                 record['id'],
                 record['fields']['title'],
@@ -109,12 +139,14 @@ class Airtable():
                 record['fields']['tag'],
                 record['fields']['main_style'],
                 record['fields']['age'],
-                record['fields']['duration'],
+                record['fields']['duration'],                
                 record['fields']['status'],
                 record['fields']['quality'],
                 record['fields']['name (from Directors)'],
                 record['fields']['name (from staff)'],
-                record['fields']['description'],
+                record['fields']['description1'],
+                description2,
+                description3,
                 record['fields']['season'],
                 record['fields']['main_image_position']
             )
