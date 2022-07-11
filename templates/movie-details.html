@@ -45,15 +45,6 @@
                     <div class="movie-details-content">
                         <div class="movie-details-info">
                             <ul>
-                                <li><span>Director: </span>
-                                    {% set i = 0 -%}
-                                    {% for item in data['directors'] -%}
-                                        {{ item }}
-                                        {% if not loop.last %}
-                                            ,
-                                        {% endif %}
-                                    {% endfor %}
-                                </li>
                                 <li><span>Starring: </span>
                                     {% set i = 0 -%}
                                     {% for item in data['staff'] -%}
