@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-<div class="movie-list section-padding-lr section-pt-50 section-pb-50 bg-black">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-                {% for item in listMovies -%}
-=======
 <div class="movie-list section-padding-lr section-pt-50 bg-black">
     <div class="container-fluid">
         <div class="section-title-4 st-border-bottom">
@@ -15,7 +8,6 @@
             
             {% for item in content -%}
             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-12">
->>>>>>> bff27fb45c68c384db045a2416a2a500bc95561e
                 <div class="movie-wrap text-center mb-30">
                     <div class="movie-img">
                         <a href="{{ url_for('movieDetails', id=item['id']) }}"><img src="static/images/product/top/{{ item['cover'] }}" alt=""></a>
@@ -34,13 +26,8 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-                {% endfor %}
-            </div>
-=======
             </div>
             {% endfor %}
->>>>>>> bff27fb45c68c384db045a2416a2a500bc95561e
         </div>
     </div>
 </div>

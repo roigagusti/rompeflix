@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ url_for("static", filename="css/material-design-iconic-font.min.css") }}">
     <link rel="stylesheet" href="{{ url_for("static", filename="css/plugins.css") }}">
     <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
-    <link rel="stylesheet" href="//www.mesural.com/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/modal-login.css") }}">
     <script src="{{ url_for("static", filename="js/vendor/modernizr-3.6.0.min.js") }}"></script>
     
     <!-- CSS Custom -->
@@ -26,59 +26,39 @@
 </head>
 
 <body>
-<div class="main-wrapper">
-    <header class="header-area inner-header section-padding-lr">
-        <div class="container-fluid">
-            <div class="row row-cols-lg-2 mb-n6 align-items-center">
-                <div class="col mb-6">
-                    <div class="logo">
-                        <a href="{{ url_for('index') }}"><img src="{{ url_for("static", filename="images/logo-light.png") }}" alt="" style="height:40px"></a>
+    <div class="main-wrapper">
+        <header class="header-area inner-header section-padding-lr">
+            <div class="container-fluid">
+                <div class="row row-cols-lg-2 mb-n6 align-items-center">
+                    <div class="col mb-6">
+                        <div class="logo">
+                            <a href="{{ url_for('index') }}"><img src="{{ url_for("static", filename="images/logo-light.png") }}" alt="" style="height:40px"></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="sign-in-up-btn-wrap">
-                        <a class="sign-in-up-btn-style" data-toggle="modal" data-target="#signin">Sign In</a>
+                    <div class="col mb-6">
+                        <div class="sign-in-up-btn-wrap">
+                            <a class="sign-in-up-btn-style" data-toggle="modal" data-target="#signin">Sign In</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <div class="hero-landing-area" style="background-image:url(static/images/bg/bg-1.png);">
-        <div class="container">
-            <div class="landing-hero-content text-center">
-                <h1 class="title">Demodays, tech realeases and more.</h1>
-                <h4 class="sub-title">Understand 011h anywhere. Let's start build</h4>
+        </header>
+        <div class="hero-landing-area" style="background-image:url(static/images/bg/bg-1.png);">
+            <div class="container">
+                <div class="landing-hero-content text-center">
+                    <h1 class="title">Demodays, tech realeases and more.</h1>
+                    <h4 class="sub-title">Understand 011h anywhere. Let's start build</h4>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Modal login -->
-{% include 'sections/modal-login.html' %}
-
-<!-- JavaScripts basics -->
-
+    
+    <!-- Modal login -->
+    {% include 'sections/modal-login.html' %}
+    
+    <!-- JavaScripts basics -->
 <script src="//app.cuantime.es/assets/libs/jquery/jquery.min.js"></script>
 <script src="//app.cuantime.es/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/metismenu/metisMenu.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/simplebar/simplebar.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/node-waves/waves.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-
-<script src="//app.cuantime.es/assets/libs/apexcharts/apexcharts.min.js"></script>
-<script src="//app.cuantime.es/assets/js/pages/dashboard.init.js"></script>
-<script src="//app.cuantime.es/assets/js/pages/form-advanced.init.js"></script>
-<script src="//app.cuantime.es/assets/libs/select2/js/select2.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-
-
-<script src="//app.cuantime.es/assets/libs/bootstrap-editable/js/index.js"></script>
-<script src="//app.cuantime.es/assets/libs/moment/min/moment.min.js"></script>
-<script src="//app.cuantime.es/assets/js/pages/form-xeditable.init.js"></script> 
 <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
 <script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}"></script>
 <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>

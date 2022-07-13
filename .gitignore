@@ -7,4 +7,5 @@ templates/[suport]/
 static/[suport]/
 app.py
 planning/
+flask_session/
 rompeflix.code-workspace
