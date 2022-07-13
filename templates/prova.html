@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta data -->
+    {% include 'sections/metadata.html' %}
+
+    <!-- Títol i Favicons -->
+    <title>Rompeflix. Ver series en línea</title>
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap.min.css") }}">
+    <script src="{{ url_for("static", filename="js/vendor/modernizr-3.6.0.min.js") }}"></script>
+    
+    <!-- CSS Custom -->
+
+    <!-- Scripts Libraries -->
+    <!-- Scripts custom -->
+</head>
+
+<body>
+
+<a class="sign-in-up-btn-style" data-toggle="modal" data-target="#signin">Sign In</a>
+
+<!-- Modal login -->
+{% include 'sections/modal-login.html' %}
+
+<!-- JavaScripts basics -->
+<script src="//app.cuantime.es/assets/libs/jquery/jquery.min.js"></script>
+<script src="//app.cuantime.es/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
+<script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}"></script>
+<script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
+<script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
+<script src="{{ url_for("static", filename="js/plugins.js") }}"></script>
+<script src="{{ url_for("static", filename="js/ajax-mail.js") }}"></script>
+<script src="{{ url_for("static", filename="js/main.js") }}"></script>
+<!-- JavaScripts custom -->
+<script src="{{ url_for("static", filename="js/script.js") }}"></script>
+<!-- Scripts custom -->
+</body>
+</html>
