@@ -1,0 +1,28 @@
+<div class="movie-list section-padding-lr section-pt-50 section-pb-50 bg-black">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+                {% for item in listMovies -%}
+                <div class="movie-wrap text-center mb-30">
+                    <div class="movie-img">
+                        <a href="{{ url_for('movieDetails', id=item['id']) }}"><img src="static/images/product/top/{{ item['cover'] }}" alt=""></a>
+                        <button title="Watchlist" class="Watch-list-btn" type="button"><i class="zmdi zmdi-plus"></i></button> 
+                    </div>
+                    <div class="movie-content">
+                        <h3 class="title"><a href="{{ url_for('movieDetails', id=item['id']) }}">{{ item['title'] }}</a></h3>
+                        {% if item['season'] == 0 -%}
+                            <span>Película</span>
+                        {% else -%}
+                            <span>Temporada {{ item['season'] }}</span>
+                        {% endif -%}
+                        
+                        <div class="movie-btn">
+                            <a href="{{ url_for('movieDetails', id=item['id']) }}" class="btn-style-hm4-2 animated">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
