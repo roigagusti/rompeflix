@@ -20,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css") }}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/responsive.css") }}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}" media="screen">
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/video.css") }}" media="screen">
 
     <!-- Scripts Libraries -->
     <!-- Scripts custom -->
@@ -31,40 +30,12 @@
         <!-- Header -->
         {% include 'sections/header.html' %}
 
-        <!-- Breadcrumb -->
-        {% include 'sections/breadcrumb.html' %}
+        <!-- Slider -->
+        {% include 'sections/slider-main.html' %}
 
-        <!-- Movie details -->
-        <div class="movie-details-wrap section-ptb-50 bg-black">
-            <div class="container">
-                <div class="movie-details-video-content-wrap">
-                    <div class="video-wrap">
-                        <iframe width="100%" height="400" src="{{ data['video'] }}"
-                        allowfullscreen style="border:none;"></iframe>
-                    </div>
-                    <div class="movie-details-content">
-                        <div class="movie-details-info">
-                            <ul>
-                                <li><span>Starring: </span>
-                                    {% set i = 0 -%}
-                                    {% for item in data['staff'] -%}
-                                        {{ item }}
-                                        {% if not loop.last %}
-                                            ,
-                                        {% endif %}
-                                    {% endfor %}
-                                </li>
-                            </ul>
-                        </div>
-                        <p>{{ data['description1'] }}</p>
-                        <p>{{ data['description2'] }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recommended for you -->
-        {# include 'sections/recommended-for-you.html' #}
+        <!-- Content Demodays -->
+        {% set content = demodays %}
+        {% include 'sections/list.html' %}
     </div>
 
     <!-- Footer -->
