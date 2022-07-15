@@ -27,6 +27,10 @@ Content table
 #scrollUp{
     display: none !important;
 }
+.search-wrap-2.search-open {
+    left: auto !important;
+    right: 0 !important;
+}
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;

@@ -33,15 +33,6 @@ Content table
     .header-wrap.header-netflix-style {
         display: flex !important;
     }
-    .header-netflix-style .logo-menu-wrap {
-        -webkit-box-pack: left !important;
-        -ms-flex-pack: left !important;
-        justify-content: left !important;
-    }
-    .search-wrap-2.search-open {
-        left: auto !important;
-        right: 0 !important;
-    }
     .logo-footer{
         display: none;
     }
