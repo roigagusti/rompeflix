@@ -15,11 +15,12 @@
                     </div>
                     <div class="movie-content">
                         <h3 class="title"><a href="{{ url_for('movieDetails', id=item['id']) }}">{{ item['title'] }}</a></h3>
-                        {% if item['season'] == 0 -%}
+                        <!-- {% if item['season'] == 0 -%}
                             <span>Película</span>
                         {% else -%}
                             <span>Temporada {{ item['season'] }}</span>
-                        {% endif -%}
+                        {% endif -%} -->
+                        <span>{{ item['squad']}}</span>
                         
                         <div class="movie-btn">
                             <a href="{{ url_for('movieDetails', id=item['id']) }}" class="btn-style-hm4-2 animated">Watch Now</a>

@@ -1,0 +1,23 @@
+<div id="filter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="signin" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <div class="box box-login">
+                <div class="login-title">Login to your account</div>
+          
+                <form class="form-signin" action="{{ url_for('validate') }}" method="post">
+                    <div class="login-input">
+                        <label for="email">User</label>
+                        <input type="text" id="email" name="user" placeholder="gavin" required="">
+                        <label for="password"><div class="label-pass">Password</div></label>
+                        <input type="password" id="password" name="password" placeholder="********" required="">
+                    </div>
+            
+                    <div class="submit-zone">
+                        <button class="btn-access" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
