@@ -31,6 +31,9 @@ Content table
     left: auto !important;
     right: 0 !important;
 }
+.movie-details-content p{
+    text-align: justify;
+}
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;
