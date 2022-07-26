@@ -35,9 +35,34 @@
             <div class="container-fluid">
                 <div class="row row-cols-lg-2 mb-n6">
                     <div class="col mb-12">
-                        {% for item in techdemo -%}
-                            {{ item['atid'] }}<br>
-                        {% endfor %}
+                        <script type="text/javascript">  
+                        ExecuteOrDelayUntilScriptLoaded(init,'sp.js');  
+                        var currentUser;  
+                        function init(){  
+                            this.clientContext = new SP.ClientContext.get_current();  
+                            this.oWeb = clientContext.get_web();  
+                            currentUser = this.oWeb.get_currentUser();  
+                            this.clientContext.load(currentUser);  
+                            this.clientContext.executeQueryAsync(Function.createDelegate(this,this.onQuerySucceeded), Function.createDelegate(this,this.onQueryFailed));  
+                        }  
+                            
+                        function onQuerySucceeded() {  
+                            document.getElementById('userLoginName').innerHTML = currentUser.get_loginName();   
+                            document.getElementById('userId').innerHTML = currentUser.get_id();  
+                            document.getElementById('userTitle').innerHTML = currentUser.get_title();  
+                            document.getElementById('userEmail').innerHTML = currentUser.get_email();  
+                        }  
+                            
+                        function onQueryFailed(sender, args) {  
+                            alert('Request failed. \nError: ' + args.get_message() + '\nStackTrace: ' + args.get_stackTrace());  
+                        }  
+                        </script>  
+                        <div>Current Logged User:  
+                            <span id="userLoginName"></span></br>  
+                            <span id="userId"></span></br>  
+                            <span id="userTitle"></span></br>  
+                            <span id="userEmail"></span></br>  
+                        </div>  
                     </div>
                 </div>
             </div>
