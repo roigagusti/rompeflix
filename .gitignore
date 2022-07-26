@@ -6,4 +6,5 @@ env/
 templates/[suport]/
 static/[suport]/
 app.py
+app_old.py
 rompeflix.code-workspace

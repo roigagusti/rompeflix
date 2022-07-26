@@ -33,7 +33,7 @@ class Airtable():
     def list(self,maxrecords,formula,tag):
         url = 'https://api.airtable.com/v0/applVLtXI9jhnWeIB/demodays'
         numero = '?maxRecords='+str(maxrecords)
-        grid = '&view=public'
+        grid = '&view=public_(no tocar)'
         filtre = "&filterByFormula={"+formula+"}='"+tag+"'"
         sort = '&sort%5B0%5D%5Bfield%5D=release_date&sort%5B0%5D%5Bdirection%5D=desc'
         rest = url+numero+grid+filtre+sort

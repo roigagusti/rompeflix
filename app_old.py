@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from classes.Airtable import Airtable
-from classes.Rompetechos import Rompetechos
 from classes.functions import dateToYear
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
 
