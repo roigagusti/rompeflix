@@ -4,7 +4,7 @@ import json
 #user: Agustí
 #app: Airtable
 class Demo():
-    def __init__(self, atid, title, image, cover, video, release, tag, main_style, age, duration, status, quality, directors, staff, description1, description2, description3, season, image_position):
+    def __init__(self, atid, title, image, cover, video, release, tag, squad, age, duration, status, quality, directors, staff, description1, description2, description3, season, image_position):
         self.id = atid  
         self.title = title
         self.image =  image
@@ -12,7 +12,7 @@ class Demo():
         self.video = video
         self.release_date = release
         self.tag = tag
-        self.main_style = main_style
+        self.squad = squad
         self.age = age
         self.duration = duration
         self.status = status
@@ -60,7 +60,7 @@ class Airtable():
                 record['fields']['video'],
                 record['fields']['release_date'],
                 record['fields']['tag'],
-                record['fields']['main_style'],
+                record['fields']['squad'],
                 record['fields']['age'],
                 record['fields']['duration'],
                 record['fields']['status'],
@@ -98,7 +98,7 @@ class Airtable():
             record['fields']['video'],
             record['fields']['release_date'],
             record['fields']['tag'],
-            record['fields']['main_style'],
+            record['fields']['squad'],
             record['fields']['age'],
             record['fields']['duration'],
             record['fields']['status'],
@@ -137,7 +137,7 @@ class Airtable():
                 record['fields']['video'],
                 record['fields']['release_date'],
                 record['fields']['tag'],
-                record['fields']['main_style'],
+                record['fields']['squad'],
                 record['fields']['age'],
                 record['fields']['duration'],                
                 record['fields']['status'],

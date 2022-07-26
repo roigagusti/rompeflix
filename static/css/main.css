@@ -6500,7 +6500,8 @@ nav.sidebar-menu ul li a:hover {
   -webkit-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s;
   -webkit-transform: translateY(30px);
-          transform: translateY(30px);
+  transform: translateY(30px);
+  text-overflow: ellipsis;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .movie-wrap .movie-content .title {
