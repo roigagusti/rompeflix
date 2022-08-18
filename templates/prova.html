@@ -19,6 +19,11 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css") }}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/responsive.css") }}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}" media="screen">
+    <style>
+    body{
+        color: #fff;
+    }
+    </style>
 
     <!-- Scripts Libraries -->
     <!-- Scripts custom -->
@@ -28,32 +33,41 @@
     <div class="main-wrapper">
         <header class="header-area inner-header section-padding-lr">
             <div class="container-fluid">
-                <div class="row row-cols-lg-2 mb-n6 align-items-center">
-                    <div class="col mb-6">
-                        <div class="logo">
-                            <a href="{{ url_for('index') }}"><img src="{{ url_for("static", filename="images/logo-light.png") }}" alt="" style="height:40px"></a>
-                        </div>
-                    </div>
-                    <div class="col mb-6">
-                        <div class="sign-in-up-btn-wrap">
-                            <a class="sign-in-up-btn-style" data-toggle="modal" data-target="#signin">Sign In</a>
-                        </div>
+                <div class="row row-cols-lg-2 mb-n6">
+                    <div class="col mb-12">
+                        <script type="text/javascript">  
+                        ExecuteOrDelayUntilScriptLoaded(init,'sp.js');  
+                        var currentUser;  
+                        function init(){  
+                            this.clientContext = new SP.ClientContext.get_current();  
+                            this.oWeb = clientContext.get_web();  
+                            currentUser = this.oWeb.get_currentUser();  
+                            this.clientContext.load(currentUser);  
+                            this.clientContext.executeQueryAsync(Function.createDelegate(this,this.onQuerySucceeded), Function.createDelegate(this,this.onQueryFailed));  
+                        }  
+                            
+                        function onQuerySucceeded() {  
+                            document.getElementById('userLoginName').innerHTML = currentUser.get_loginName();   
+                            document.getElementById('userId').innerHTML = currentUser.get_id();  
+                            document.getElementById('userTitle').innerHTML = currentUser.get_title();  
+                            document.getElementById('userEmail').innerHTML = currentUser.get_email();  
+                        }  
+                            
+                        function onQueryFailed(sender, args) {  
+                            alert('Request failed. \nError: ' + args.get_message() + '\nStackTrace: ' + args.get_stackTrace());  
+                        }  
+                        </script>  
+                        <div>Current Logged User:  
+                            <span id="userLoginName"></span></br>  
+                            <span id="userId"></span></br>  
+                            <span id="userTitle"></span></br>  
+                            <span id="userEmail"></span></br>  
+                        </div>  
                     </div>
                 </div>
             </div>
         </header>
-        <div class="hero-landing-area" style="background-image:url(static/images/bg/bg-1.png);">
-            <div class="container">
-                <div class="landing-hero-content text-center">
-                    <h1 class="title">Demodays, tech realeases and more.</h1>
-                    <h4 class="sub-title">Understand 011h anywhere. Let's start build</h4>
-                </div>
-            </div>
-        </div>
     </div>
-    
-    <!-- Modal login -->
-    {% include 'sections/modal-login.html' %}
     
     <!-- JavaScripts basics -->
 <script src="//app.cuantime.es/assets/libs/jquery/jquery.min.js"></script>

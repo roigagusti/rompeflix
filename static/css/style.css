@@ -27,6 +27,16 @@ Content table
 #scrollUp{
     display: none !important;
 }
+<<<<<<< HEAD
+=======
+.search-wrap-2.search-open {
+    left: auto !important;
+    right: 0 !important;
+}
+.movie-details-content p{
+    text-align: justify;
+}
+>>>>>>> 219209e65111fbd0eadf864575584e237fa33ea5
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;
@@ -47,7 +57,7 @@ Content table
     color: #a00000;
 }
 .logo-footer {
-    max-width: 50%;
+    max-width: 90%;
     display: initial;
 }
 .footer-titol{

@@ -10,10 +10,10 @@
                 <div class="main-menu main-theme-color-four">
                     <nav class="main-navigation">
                         <ul>
-                            <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
                             <li><a href="/demodays">Demodays</a></li>
                             <li><a href="/tech-releases">Tech releases</a></li>
                             <li><a href="/components">Components</a></li>
+                            <!--<li><a href="#" data-toggle="modal" data-target="#filter">Filter</a></li>-->
                         </ul>
                     </nav>
                 </div>
@@ -38,3 +38,6 @@
         </div>
     </div>
 </header>
+    
+<!-- Modal filter -->
+{% include 'sections/modal-filter.html' %}

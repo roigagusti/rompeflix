@@ -5,5 +5,9 @@
 env/
 templates/[suport]/
 static/[suport]/
+flask_session/
 app.py
+appMI.py
+app.config_b2c.py
+app.config.py
 rompeflix.code-workspace
