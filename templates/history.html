@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta data -->
+    {% include 'sections/metadata.html' %}
+
+    <!-- Títol i Favicons -->
+    <title>Rompeflix. Ver series en línea</title>
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap.min.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/material-design-iconic-font.min.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/plugins.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+    <link rel="stylesheet" href="//www.mesural.com/lib/bootstrap/bootstrap.css">
+    <script src="{{ url_for("static", filename="js/vendor/modernizr-3.6.0.min.js") }}"></script>
+    
+    <!-- CSS Custom -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css") }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/responsive.css") }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}" media="screen">
+
+    <!-- Scripts Libraries -->
+    <!-- Scripts custom -->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <!-- Header -->
+        {% include 'sections/header.html' %}
+        
+        <div class="movie-list-area section-ptb-50 bg-black-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-12 me-auto ms-auto">
+                        <div class="movie-list-top-bar">
+                            <div class="movie-list-title">
+                                <h2 class="title">History</h2>
+                            </div>
+                            <!--<div class="movie-list-clear">
+                                <button class="Watch-list-clear-btn" type="button">Clear History</button>
+                            </div>-->
+                        </div>
+                        <div class="movielist-wrap">
+                            <!-- List of movies -->
+                            <div class="single-movielist">
+                                <div class="movielist-img-content">
+                                    <div class="movielist-img">
+                                        <a href="movie-details.html">
+                                            <img src="assets/images/product/movie-25.jpg" alt="">
+                                            <i class="zmdi zmdi-play play-btn-style"></i>
+                                        </a>
+                                    </div>
+                                    <div class="movielist-content">
+                                        <h3 class="title"><a href="movie-details.html">Top Of The World</a></h3>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                                    </div>
+                                </div>
+                                <div class="movielist-close">
+                                    <p>18 Hours Ago</p>
+                                    <a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                                </div>
+                            </div>
+                            <!-- End of iteration -->
+
+                            <div class="single-movielist">
+                                <div class="movielist-img-content">
+                                    <div class="movielist-img">
+                                        <a href="movie-details.html">
+                                            <img src="assets/images/product/movie-26.jpg" alt="">
+                                            <i class="zmdi zmdi-play play-btn-style"></i>
+                                        </a>
+                                    </div>
+                                    <div class="movielist-content">
+                                        <h3 class="title"><a href="movie-details.html">The She</a></h3>
+                                        <p>It is a long established fact that a reader will be distracted by readable...</p>
+                                    </div>
+                                </div>
+                                <div class="movielist-close">
+                                    <p>15 Hours Ago</p>
+                                    <a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                                </div>
+                            </div>
+                            <div class="single-movielist">
+                                <div class="movielist-img-content">
+                                    <div class="movielist-img">
+                                        <a href="movie-details.html">
+                                            <img src="assets/images/product/movie-27.jpg" alt="">
+                                            <i class="zmdi zmdi-play play-btn-style"></i>
+                                        </a>
+                                    </div>
+                                    <div class="movielist-content">
+                                        <h3 class="title"><a href="movie-details.html">Love Africa</a></h3>
+                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
+                                    </div>
+                                </div>
+                                <div class="movielist-close">
+                                    <p>10 Hours Ago</p>
+                                    <a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                                </div>
+                            </div>
+                            <div class="single-movielist">
+                                <div class="movielist-img-content">
+                                    <div class="movielist-img">
+                                        <a href="movie-details.html">
+                                            <img src="assets/images/product/movie-28.jpg" alt="">
+                                            <i class="zmdi zmdi-play play-btn-style"></i>
+                                        </a>
+                                    </div>
+                                    <div class="movielist-content">
+                                        <h3 class="title"><a href="movie-details.html">The Lost Girl</a></h3>
+                                        <p>There are many variations of passages of Lorem Ipsum available...</p>
+                                    </div>
+                                </div>
+                                <div class="movielist-close">
+                                    <p>05 Hours Ago</p>
+                                    <a class="movielist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                                </div>
+                            </div>
+                            <div class="single-movielist">
+                                <div class="movielist-img-content">
+                                    <div class="movielist-img">
+                                        <a href="movie-details.html">
+                                            <img src="assets/images/product/movie-29.jpg" alt="">
+                                            <i class="zmdi zmdi-play play-btn-style"></i>
+                                        </a>
+                                    </div>
+                                    <div class="movielist-content">
+                                        <h3 class="title"><a href="movie-details.html">The Locked</a></h3>
+                                        <p>All the Lorem Ipsum generators on the Internet tend to necessary...</p>
+                                    </div>
+                                </div>
+                                <div class="movielist-close">
+                                    <p>05 Hours Ago</p>
+                                    <a class="movielist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'sections/footer.html' %}
+
+    <!-- JavaScripts basics -->
+    <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/plugins.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/ajax-mail.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/main.js") }}"></script>
+    <!-- JavaScripts custom -->
+    <script src="{{ url_for("static", filename="js/script.js") }}"></script>
+    <!-- Scripts custom -->
+</body>
+</html>
