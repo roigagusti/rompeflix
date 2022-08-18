@@ -2,6 +2,8 @@
 *.log
 
 # ignore ALL files in ANY directory named ...
+__pycache__/
+classes/__pycache__/
 env/
 templates/[suport]/
 static/[suport]/
