@@ -31,6 +31,20 @@
                         </form>
                     </div>
                 </div>
+                <div class="our-profile-area ">
+                    <a href="#" class="our-profile-pc" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{ url_for("static", filename="images/users/base.png") }}" alt="">
+                    </a>
+                    <div class="dropdown-menu netflix-profile-style red">
+                        <ul>
+                            <li class="single-list" style="color:#f4181c;font-weight:500">{{ user.get("name") }}</li>
+                            <!--<li class="single-list"><a href="history.html">History</a></li>
+                            <li class="single-list"><a href="watchlist.html">Watchlist</a></li>
+                            <li class="single-list"><a href="my-account-2.html">My Account</a></li>-->
+                            <li class="single-list"><a href="logout">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <!-- mobile-menu start -->
                 <div class="mobile-menu d-block d-lg-none"></div>
                 <!-- mobile-menu end -->

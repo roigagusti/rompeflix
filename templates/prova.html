@@ -2,85 +2,14 @@
 <html lang="es">
 
 <head>
-    <!-- Meta data -->
-    {% include 'sections/metadata.html' %}
 
     <!-- Títol i Favicons -->
     <title>Rompeflix. Ver series en línea</title>
-
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/material-design-iconic-font.min.css") }}">
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/plugins.css") }}">
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
-    <script src="{{ url_for("static", filename="js/vendor/modernizr-3.6.0.min.js") }}"></script>
-    
-    <!-- CSS Custom -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css") }}" media="screen">
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/responsive.css") }}" media="screen">
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}" media="screen">
-    <style>
-    body{
-        color: #fff;
-    }
-    </style>
-
-    <!-- Scripts Libraries -->
-    <!-- Scripts custom -->
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <header class="header-area inner-header section-padding-lr">
-            <div class="container-fluid">
-                <div class="row row-cols-lg-2 mb-n6">
-                    <div class="col mb-12">
-                        <script type="text/javascript">  
-                        ExecuteOrDelayUntilScriptLoaded(init,'sp.js');  
-                        var currentUser;  
-                        function init(){  
-                            this.clientContext = new SP.ClientContext.get_current();  
-                            this.oWeb = clientContext.get_web();  
-                            currentUser = this.oWeb.get_currentUser();  
-                            this.clientContext.load(currentUser);  
-                            this.clientContext.executeQueryAsync(Function.createDelegate(this,this.onQuerySucceeded), Function.createDelegate(this,this.onQueryFailed));  
-                        }  
-                            
-                        function onQuerySucceeded() {  
-                            document.getElementById('userLoginName').innerHTML = currentUser.get_loginName();   
-                            document.getElementById('userId').innerHTML = currentUser.get_id();  
-                            document.getElementById('userTitle').innerHTML = currentUser.get_title();  
-                            document.getElementById('userEmail').innerHTML = currentUser.get_email();  
-                        }  
-                            
-                        function onQueryFailed(sender, args) {  
-                            alert('Request failed. \nError: ' + args.get_message() + '\nStackTrace: ' + args.get_stackTrace());  
-                        }  
-                        </script>  
-                        <div>Current Logged User:  
-                            <span id="userLoginName"></span></br>  
-                            <span id="userId"></span></br>  
-                            <span id="userTitle"></span></br>  
-                            <span id="userEmail"></span></br>  
-                        </div>  
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
-    
-    <!-- JavaScripts basics -->
-<script src="//app.cuantime.es/assets/libs/jquery/jquery.min.js"></script>
-<script src="//app.cuantime.es/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
-<script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}"></script>
-<script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
-<script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
-<script src="{{ url_for("static", filename="js/plugins.js") }}"></script>
-<script src="{{ url_for("static", filename="js/ajax-mail.js") }}"></script>
-<script src="{{ url_for("static", filename="js/main.js") }}"></script>
-<!-- JavaScripts custom -->
-<script src="{{ url_for("static", filename="js/script.js") }}"></script>
-<!-- Scripts custom -->
+    {% for item in sliderMain -%}
+        {{ item['id'] }}
+    {% endfor %}
 </body>
 </html>

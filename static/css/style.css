@@ -27,8 +27,6 @@ Content table
 #scrollUp{
     display: none !important;
 }
-<<<<<<< HEAD
-=======
 .search-wrap-2.search-open {
     left: auto !important;
     right: 0 !important;
@@ -36,7 +34,9 @@ Content table
 .movie-details-content p{
     text-align: justify;
 }
->>>>>>> 219209e65111fbd0eadf864575584e237fa33ea5
+a.btn-signwith:hover{
+    color: #fff !important;
+}
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;
