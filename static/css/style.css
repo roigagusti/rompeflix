@@ -11,6 +11,7 @@ Content table
 --------------
 01. Correccions
 02. Footer
+03. Login
 
 
 
@@ -79,4 +80,10 @@ a.btn-signwith:hover{
     color: #969696;
     text-align: center;
     padding-top: 20px;
+}
+/* ----- 03. Login ----- */
+.disabled-btn{
+    background-color: #200000;
+    color: rgba(255,255,255,0.4);
+    cursor: default !important; 
 }
