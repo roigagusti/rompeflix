@@ -4,7 +4,7 @@ from classes.functions import dateToYear
 from classes.private import atCredentials
 from flask_login import UserMixin
 # PROVES
-from db import dbSelect
+from classes.db import dbInsert,dbSelect,dbUpdate
 from sqlalchemy import Column, Integer, String, Float
 
 # Importacions per LoginWithMicrosoft
@@ -64,11 +64,20 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    text = dbSelect('rompeflix_users','name')
-    miid = session["user"].get("miid")
+    miid = session["user"].get("oid")
     name = session["user"].get("name")
-    email = session["user"].get("email")
-    return render_template('prova.html',print=text,miid=miid,name=name,email=email)
+    email = session["user"].get("preferred_username")
+    return render_template('prova.html',miid=miid,name=name,email=email)
+
+@app.route("/validar",methods=['POST'])
+def validar():
+    rtid = request.form['id']
+    name = request.form['name']
+    email = request.form['email']
+    #dbprova = dbInsert('rompeflix_users','miid,name,email',"'"+rtid+"','"+name+"','"+email+"'")
+    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3)
+    #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='gsfdgdsg'")
+    return redirect(url_for("prova"))
 
 
 #-- PRODUCCIÓ --#

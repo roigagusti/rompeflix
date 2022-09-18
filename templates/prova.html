@@ -31,9 +31,25 @@
         {% include 'sections/header.html' %}
 
         <!-- Slider -->
-        ID: {{ user['oid'] }}<br>
-        Nom: {{ user['name'] }}<br>
-        Email: {{ user['preferred_username'] }}<br>
+        DB-prova: {{ dbprova }}<br>
+        ID: {{ miid }}<br>
+        Nom: {{ name }}<br>
+        Email: {{ email }}<br>
+
+        <form action="validar" method="post">
+            <div class="login-input">
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id">
+                <label for="id">Nom</label>
+                <input type="text" id="name" name="name">
+                <label for="id">Email</label>
+                <input type="text" id="email" name="email">
+            </div>
+    
+            <div class="submit-zone">
+                <button type="submit" class="btn-access">Enviar</a>
+            </div>
+        </form>
     </div>
 
     <!-- Footer -->
