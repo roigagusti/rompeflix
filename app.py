@@ -33,7 +33,7 @@ at = Airtable(token,base_id)
 class User(UserMixin):
     def __init__(self, id):
         self.id = id
-        self.name = '*****'
+        self.name = '******'
         self.password = '*****'
 
     def __repr__(self):
