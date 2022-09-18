@@ -4,12 +4,11 @@
 # ignore ALL files in ANY directory named ...
 __pycache__/
 classes/__pycache__/
+classes/private.py
 env/
-templates/[suport]/
-static/[suport]/
 flask_session/
-app.py
-appMI.py
+static/[suport]/
+templates/[suport]/
 app_config_b2c.py
 app_config.py
 rompeflix.code-workspace
