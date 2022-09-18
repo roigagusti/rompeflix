@@ -24,3 +24,7 @@ def get_table(table):
     engine = connectRT()
     table = Table(table, metadata, autoload=True, autoload_with=engine)
     return table
+
+def token():
+    token = 'keyVBM9rXFpJNDEIU'
+    return token

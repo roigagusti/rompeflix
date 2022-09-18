@@ -26,12 +26,12 @@ class Demo():
         self.image_position = image_position
 
 class Airtable():
-    def __init__(self):
-        self.token = 'keyVBM9rXFpJNDEIU'
-        self.base_id = 'applVLtXI9jhnWeIB'
+    def __init__(self,token):
+        self.token = token
+        self.base_id = 'appd2t4eco5DcWYGI'
 
     def list(self,maxrecords,formula,tag):
-        url = 'https://api.airtable.com/v0/applVLtXI9jhnWeIB/demodays'
+        url = 'https://api.airtable.com/v0/'+ self.base_id +'/demodays'
         numero = '?maxRecords='+str(maxrecords)
         grid = '&view=public_(no tocar)'
         filtre = "&filterByFormula={"+formula+"}='"+tag+"'"
