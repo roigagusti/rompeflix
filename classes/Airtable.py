@@ -26,9 +26,9 @@ class Demo():
         self.image_position = image_position
 
 class Airtable():
-    def __init__(self,token):
+    def __init__(self,token,base_id):
         self.token = token
-        self.base_id = 'appd2t4eco5DcWYGI'
+        self.base_id = base_id
 
     def list(self,maxrecords,formula,tag):
         url = 'https://api.airtable.com/v0/'+ self.base_id +'/demodays'
