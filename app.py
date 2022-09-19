@@ -51,39 +51,39 @@ def initials(a):
 #-- PROVES --#
 @app.route("/history")
 def history():
+    history = dbSelect('rompeflix_history','media_id',"user_miid='1'",limit=10)
+    demos = []
+    for item in history:
+        demoday = at.record(item[0])
+        demos.append(demoday)
+    
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('history.html',user=username,initials=initials(username))
+    return render_template('history.html',content=demos,user=username,initials=initials(username))
 @app.route("/my-list")
 def myList():
+    favourite = dbSelect('rompeflix_favourites','media_id',"user_miid='1'",limit=10)
+    demos = []
+    for item in favourite:
+        demoday = at.record(item[0])
+        demos.append(demoday)
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('my-list.html',user=username,initials=initials(username))
+    return render_template('my-list.html',content=demos,user=username,initials=initials(username))
 
 @app.route("/prova")
 def prova():
-    rtid = 'h'
-    name = 'ti'
-    email = 'to'
-    #dbprova = dbInsert('rompeflix_users','miid,name,email',"'"+rtid+"','"+name+"','"+email+"'")
+    user = '1'
+    video = 'rec0N64DyqsWd2vn0' #recBrPqGag72X9jaS
+    dbprova = dbInsert('rompeflix_favourites','user_miid,media_id',"'"+user+"','"+video+"'")
     #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=1)
     #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3,fetchone=1)
     #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='"+rtid+"'")
-    dbprova = dbHas('rompeflix_users','name="ti"')
+    #dbprova = dbHas('rompeflix_users','name="ti"')
     #print=dbSelect('rompeflix_users', where='miid="6610bd4a-bf42-4bbb-ba1d-37ff9e1cba8f"')
     return render_template('prova.html',print=dbprova)
-
-@app.route("/validar",methods=['POST'])
-def validar():
-    rtid = request.form['id']
-    name = request.form['name']
-    email = request.form['email']
-    #dbprova = dbInsert('rompeflix_users','miid,name,email',"'"+rtid+"','"+name+"','"+email+"'")
-    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3)
-    #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='gsfdgdsg'")
-    return redirect(url_for("prova"))
 
 
 #-- PRODUCCIÓ --#
