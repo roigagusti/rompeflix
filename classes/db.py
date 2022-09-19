@@ -20,6 +20,8 @@ def connectar(query,type):
             records = cursor.fetchall()
         if type == 'selectone':
             records = cursor.fetchone()
+        if type == 'has':
+            records = cursor.fetchone()
     except mysql.connector.Error as e:
         return False
     finally:
@@ -68,4 +70,17 @@ def dbUpdate(taula,values,where):
     # where: string "column='valor'"
     query = "update " + taula + " set " + values + " where " + where
     connexio = connectar(query,"insert")
+    return connexio
+
+def dbHas(taula, where, columns="*"):
+    # taula: string
+    # columns: string "columna-A,columnaB,columnaC" (optional, ALL per defecte)
+    # where: string "column='valor'" (optional, sense filtre per defecte)
+    # columns: string "columna-A,columnaB,columnaC" (optional, ALL per defecte)
+    query = "select " + columns + " from " + taula + ' where ' + where
+    answer = connectar(query,"has")
+    if answer is None:
+        connexio = False
+    else:
+        connexio = True
     return connexio

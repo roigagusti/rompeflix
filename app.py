@@ -4,7 +4,7 @@ from classes.functions import dateToYear
 from classes.private import atCredentials
 from flask_login import UserMixin
 # PROVES
-from classes.db import dbInsert,dbSelect,dbUpdate
+from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 from sqlalchemy import Column, Integer, String, Float
 
 # Importacions per LoginWithMicrosoft
@@ -64,10 +64,16 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    miid = session["user"].get("oid")
-    name = session["user"].get("name")
-    email = session["user"].get("preferred_username")
-    return render_template('prova.html',miid=miid,name=name,email=email)
+    rtid = 'h'
+    name = 'ti'
+    email = 'to'
+    #dbprova = dbInsert('rompeflix_users','miid,name,email',"'"+rtid+"','"+name+"','"+email+"'")
+    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=1)
+    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3,fetchone=1)
+    #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='"+rtid+"'")
+    dbprova = dbHas('rompeflix_users','name="ti"')
+    #print=dbSelect('rompeflix_users', where='miid="6610bd4a-bf42-4bbb-ba1d-37ff9e1cba8f"')
+    return render_template('prova.html',print=dbprova)
 
 @app.route("/validar",methods=['POST'])
 def validar():
@@ -157,6 +163,9 @@ def authorized():
         if "error" in result:
             return render_template("auth_error.html", result=result)
         session["user"] = result.get("id_token_claims")
+        exists = dbHas('rompeflix_users','miid="'+session["user"].get("oid")+'"')
+        if not exists:
+            dbInsert('rompeflix_users','miid,name,email',"'"+session["user"].get("oid")+"','"+session["user"].get("name")+"','"+session["user"].get("preferred_username")+"'")
         _save_cache(cache)
     except ValueError:
         pass
