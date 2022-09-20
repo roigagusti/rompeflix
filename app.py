@@ -5,6 +5,7 @@ from classes.private import atCredentials
 from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 #from sqlalchemy import Column, Integer, String, Float
 from flask_login import UserMixin
+import timeago, datetime, timedelta
 # PROVES
 
 # Importacions per LoginWithMicrosoft
@@ -50,6 +51,7 @@ def initials(a):
 ### APP ###
 #-- PROVES --#
 @app.route("/history")
+<<<<<<< HEAD
 def history():
     history = dbSelect('rompeflix_history','media_id',"user_miid='1'",limit=10)
     demos = []
@@ -57,9 +59,21 @@ def history():
         demoday = at.record(item[0])
         demos.append(demoday)
 
+=======
+def history():    
+>>>>>>> a6c126d1cc7d375ef5626b87821a6871fdd6eb0f
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
+    
+    history = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
+    demos = []
+    for item in history:
+        time = timeago.format(item[1], datetime.datetime.now())
+        demoday = at.record(item[0])
+        historyDemo = [demoday,time]
+        demos.append(historyDemo)
+    demos.sort(key=lambda x: x[1], reverse=False)
     return render_template('history.html',content=demos,user=username,initials=initials(username))
 @app.route("/my-list")
 def myList():
@@ -75,15 +89,8 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    user = '1'
-    video = 'rec0N64DyqsWd2vn0' #recBrPqGag72X9jaS
-    dbprova = dbInsert('rompeflix_favourites','user_miid,media_id',"'"+user+"','"+video+"'")
-    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=1)
-    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3,fetchone=1)
-    #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='"+rtid+"'")
-    #dbprova = dbHas('rompeflix_users','name="ti"')
-    #print=dbSelect('rompeflix_users', where='miid="6610bd4a-bf42-4bbb-ba1d-37ff9e1cba8f"')
-    return render_template('prova.html',print=dbprova)
+    print = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
+    return render_template('prova.html',print=print)
 
 
 #-- PRODUCCIÓ --#
@@ -116,6 +123,7 @@ def movieDetails():
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
+    history = dbInsert('rompeflix_history','user_miid,media_id',"'"+session["user"].get("oid")+"','"+atid+"'")
     return render_template('movie-details.html',user=username,initials=initials(username),data=data,year=year)
 
 @app.route('/demodays',methods=['GET'])
