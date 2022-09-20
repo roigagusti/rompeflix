@@ -51,17 +51,7 @@ def initials(a):
 ### APP ###
 #-- PROVES --#
 @app.route("/history")
-<<<<<<< HEAD
-def history():
-    history = dbSelect('rompeflix_history','media_id',"user_miid='1'",limit=10)
-    demos = []
-    for item in history:
-        demoday = at.record(item[0])
-        demos.append(demoday)
-
-=======
 def history():    
->>>>>>> a6c126d1cc7d375ef5626b87821a6871fdd6eb0f
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
