@@ -48,19 +48,19 @@
                             <div class="single-movielist">
                                 <div class="movielist-img-content">
                                     <div class="movielist-img">
-                                        <a href="{{ url_for('movieDetails', id=item['id']) }}">
-                                            <img src="assets/images/product/movie-25.jpg" alt="">
+                                        <a href="{{ url_for('movieDetails', id=item[0]['id']) }}">
+                                            <img src="static/images/history/{{ item[0]['cover'] }}" alt="">
                                             <i class="zmdi zmdi-play play-btn-style"></i>
                                         </a>
                                     </div>
                                     <div class="movielist-content" style="min-width: 100%;">
-                                        <h3 class="title"><a href="{{ url_for('movieDetails', id=item['id']) }}">{{ item['title'] }}</a></h3>
-                                        <p>{{ item['squad'] }}</p>
+                                        <h3 class="title"><a href="{{ url_for('movieDetails', id=item[0]['id']) }}">{{ item[0]['title'] }}</a></h3>
+                                        <p>{{ item[0]['squad'] }}</p>
                                     </div>
                                 </div>
                                 <div class="movielist-close">
-                                    <p>18 Hours Ago</p>
-                                    <a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                                    <p>{{ item[1] }}</p>
+                                    <!--<a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>-->
                                 </div>
                             </div>
                             {% endfor %}
