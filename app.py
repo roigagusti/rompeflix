@@ -56,7 +56,7 @@ def history():
     for item in history:
         demoday = at.record(item[0])
         demos.append(demoday)
-    
+
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
