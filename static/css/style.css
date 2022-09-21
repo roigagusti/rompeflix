@@ -81,3 +81,11 @@ a.btn-signwith:hover{
     text-align: center;
     padding-top: 20px;
 }
+/* ----- 03. History ----- */
+.no-history{
+    width: 100%;
+    text-align: center;
+    padding-top: 10vh;
+    padding-bottom: 15vh;
+    color: #999;
+}

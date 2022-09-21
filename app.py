@@ -7,6 +7,8 @@ from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 from flask_login import UserMixin
 import timeago, datetime
 # PROVES
+from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
+from sqlalchemy import Column, Integer, String, Float
 
 # Importacions per LoginWithMicrosoft
 import requests
@@ -55,7 +57,7 @@ def history():
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-
+    initial = 0
     history = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
     demos = []
     for item in history:
@@ -64,7 +66,9 @@ def history():
         historyDemo = [demoday,time]
         demos.append(historyDemo)
     demos.sort(key=lambda x: x[1], reverse=False)
-    return render_template('history.html',content=demos,user=username,initials=initials(username))
+    if len(demos) == 0:
+        initial = 1
+    return render_template('history.html',initial=initial,content=demos,user=username,initials=initials(username))
 @app.route("/my-list")
 def myList():
     favourite = dbSelect('rompeflix_favourites','media_id',"user_miid='1'",limit=10)
@@ -79,8 +83,18 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    print = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
-    return render_template('prova.html',print=print)
+    userExists = dbHas('rompeflix_users',where="miid='6610bd4a-bf42-4bbb-ba1d-37ff91cba8f'")
+    return render_template('prova.html',miid=userExists)
+
+@app.route("/validar",methods=['POST'])
+def validar():
+    rtid = request.form['id']
+    name = request.form['name']
+    email = request.form['email']
+    #dbprova = dbInsert('rompeflix_users','miid,name,email',"'"+rtid+"','"+name+"','"+email+"'")
+    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3)
+    #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='gsfdgdsg'")
+    return redirect(url_for("prova"))
 
 
 #-- PRODUCCIÓ --#
@@ -161,8 +175,9 @@ def authorized():
         if "error" in result:
             return render_template("auth_error.html", result=result)
         session["user"] = result.get("id_token_claims")
-        exists = dbHas('rompeflix_users','miid="'+session["user"].get("oid")+'"')
-        if not exists:
+
+        userExists = dbHas('rompeflix_users',where="miid='"+session["user"].get("oid")+"'")
+        if not userExists:
             dbInsert('rompeflix_users','miid,name,email',"'"+session["user"].get("oid")+"','"+session["user"].get("name")+"','"+session["user"].get("preferred_username")+"'")
         _save_cache(cache)
     except ValueError:
