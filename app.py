@@ -5,7 +5,7 @@ from classes.private import atCredentials
 from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 #from sqlalchemy import Column, Integer, String, Float
 from flask_login import UserMixin
-import timeago, datetime, timedelta
+import timeago, datetime
 # PROVES
 
 # Importacions per LoginWithMicrosoft
@@ -51,11 +51,11 @@ def initials(a):
 ### APP ###
 #-- PROVES --#
 @app.route("/history")
-def history():    
+def history():
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    
+
     history = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
     demos = []
     for item in history:
