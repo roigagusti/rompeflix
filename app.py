@@ -175,6 +175,7 @@ def authorized():
         if "error" in result:
             return render_template("auth_error.html", result=result)
         session["user"] = result.get("id_token_claims")
+
         userExists = dbHas('rompeflix_users',where="miid='"+session["user"].get("oid")+"'")
         if not userExists:
             dbInsert('rompeflix_users','miid,name,email',"'"+session["user"].get("oid")+"','"+session["user"].get("name")+"','"+session["user"].get("preferred_username")+"'")
