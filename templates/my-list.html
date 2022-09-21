@@ -44,93 +44,26 @@
                         </div>
                         <div class="movielist-wrap">
                             <!-- List of movies -->
+                            {% for item in content -%}
                             <div class="single-movielist">
                                 <div class="movielist-img-content">
                                     <div class="movielist-img">
-                                        <a href="movie-details.html">
+                                        <a href="{{ url_for('movieDetails', id=item['id']) }}">
                                             <img src="assets/images/product/movie-27.jpg" alt="">
                                             <i class="zmdi zmdi-play play-btn-style"></i>
                                         </a>
                                     </div>
-                                    <div class="movielist-content">
-                                        <h3 class="title"><a href="movie-details.html">Love Africa</a></h3>
-                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text...</p>
+                                    <div class="movielist-content" style="min-width: 100%;">
+                                        <h3 class="title"><a href="{{ url_for('movieDetails', id=item['id']) }}">{{ item['title'] }}</a></h3>
+                                        <p>{{ item['squad'] }}</p>
                                     </div>
                                 </div>
                                 <div class="movielist-close">
                                     <a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
                                 </div>
                             </div>
+                            {% endfor %}
                             <!-- End of iteration -->
-
-                            <div class="single-movielist">
-                                <div class="movielist-img-content">
-                                    <div class="movielist-img">
-                                        <a href="movie-details.html">
-                                            <img src="assets/images/product/movie-28.jpg" alt="">
-                                            <i class="zmdi zmdi-play play-btn-style"></i>
-                                        </a>
-                                    </div>
-                                    <div class="movielist-content">
-                                        <h3 class="title"><a href="movie-details.html">The Lost Girl</a></h3>
-                                        <p>There are many variations of passages of Lorem Ipsum available...</p>
-                                    </div>
-                                </div>
-                                <div class="movielist-close">
-                                    <a class="movielist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
-                                </div>
-                            </div>
-                            <div class="single-movielist">
-                                <div class="movielist-img-content">
-                                    <div class="movielist-img">
-                                        <a href="movie-details.html">
-                                            <img src="assets/images/product/movie-25.jpg" alt="">
-                                            <i class="zmdi zmdi-play play-btn-style"></i>
-                                        </a>
-                                    </div>
-                                    <div class="movielist-content">
-                                        <h3 class="title"><a href="movie-details.html">Top Of The World</a></h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-                                    </div>
-                                </div>
-                                <div class="movielist-close">
-                                    <a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
-                                </div>
-                            </div>
-                            <div class="single-movielist">
-                                <div class="movielist-img-content">
-                                    <div class="movielist-img">
-                                        <a href="movie-details.html">
-                                            <img src="assets/images/product/movie-26.jpg" alt="">
-                                            <i class="zmdi zmdi-play play-btn-style"></i>
-                                        </a>
-                                    </div>
-                                    <div class="movielist-content">
-                                        <h3 class="title"><a href="movie-details.html">The She</a></h3>
-                                        <p>It is a long established fact that a reader will be distracted by readable...</p>
-                                    </div>
-                                </div>
-                                <div class="movielist-close">
-                                    <a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
-                                </div>
-                            </div>
-                            <div class="single-movielist">
-                                <div class="movielist-img-content">
-                                    <div class="movielist-img">
-                                        <a href="movie-details.html">
-                                            <img src="assets/images/product/movie-29.jpg" alt="">
-                                            <i class="zmdi zmdi-play play-btn-style"></i>
-                                        </a>
-                                    </div>
-                                    <div class="movielist-content">
-                                        <h3 class="title"><a href="movie-details.html">The Locked</a></h3>
-                                        <p>All the Lorem Ipsum generators on the Internet tend to necessary...</p>
-                                    </div>
-                                </div>
-                                <div class="movielist-close">
-                                    <a class="movielist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

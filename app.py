@@ -2,10 +2,16 @@ from flask import Flask, render_template, session, request, redirect, url_for
 from classes.Airtable import Airtable
 from classes.functions import dateToYear
 from classes.private import atCredentials
+from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
+#from sqlalchemy import Column, Integer, String, Float
 from flask_login import UserMixin
+import timeago, datetime, timedelta
 # PROVES
+<<<<<<< HEAD
 from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 from sqlalchemy import Column, Integer, String, Float
+=======
+>>>>>>> 14d0d55cdb09916cd3010e6f60de4313b1c6818b
 
 # Importacions per LoginWithMicrosoft
 import requests
@@ -50,20 +56,35 @@ def initials(a):
 ### APP ###
 #-- PROVES --#
 @app.route("/history")
-def history():
+def history():    
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('history.html',user=username,initials=initials(username))
+    
+    history = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
+    demos = []
+    for item in history:
+        time = timeago.format(item[1], datetime.datetime.now())
+        demoday = at.record(item[0])
+        historyDemo = [demoday,time]
+        demos.append(historyDemo)
+    demos.sort(key=lambda x: x[1], reverse=False)
+    return render_template('history.html',content=demos,user=username,initials=initials(username))
 @app.route("/my-list")
 def myList():
+    favourite = dbSelect('rompeflix_favourites','media_id',"user_miid='1'",limit=10)
+    demos = []
+    for item in favourite:
+        demoday = at.record(item[0])
+        demos.append(demoday)
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('my-list.html',user=username,initials=initials(username))
+    return render_template('my-list.html',content=demos,user=username,initials=initials(username))
 
 @app.route("/prova")
 def prova():
+<<<<<<< HEAD
     userExists = dbHas('rompeflix_users',where="miid='6610bd4a-bf42-4bbb-ba1d-37ff91cba8f'")
     return render_template('prova.html',miid=userExists)
 
@@ -76,6 +97,10 @@ def validar():
     #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3)
     #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='gsfdgdsg'")
     return redirect(url_for("prova"))
+=======
+    print = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
+    return render_template('prova.html',print=print)
+>>>>>>> 14d0d55cdb09916cd3010e6f60de4313b1c6818b
 
 
 #-- PRODUCCIÓ --#
@@ -108,6 +133,7 @@ def movieDetails():
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
+    history = dbInsert('rompeflix_history','user_miid,media_id',"'"+session["user"].get("oid")+"','"+atid+"'")
     return render_template('movie-details.html',user=username,initials=initials(username),data=data,year=year)
 
 @app.route('/demodays',methods=['GET'])
@@ -155,9 +181,14 @@ def authorized():
         if "error" in result:
             return render_template("auth_error.html", result=result)
         session["user"] = result.get("id_token_claims")
+<<<<<<< HEAD
         
         userExists = dbHas('rompeflix_users',where="miid='"+session["user"].get("oid")+"'")
         if not userExists:
+=======
+        exists = dbHas('rompeflix_users','miid="'+session["user"].get("oid")+'"')
+        if not exists:
+>>>>>>> 14d0d55cdb09916cd3010e6f60de4313b1c6818b
             dbInsert('rompeflix_users','miid,name,email',"'"+session["user"].get("oid")+"','"+session["user"].get("name")+"','"+session["user"].get("preferred_username")+"'")
         _save_cache(cache)
     except ValueError:

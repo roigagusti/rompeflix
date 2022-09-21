@@ -21,7 +21,11 @@ def connectar(query,type):
         if type == 'selectone':
             records = cursor.fetchone()
         if type == 'has':
+<<<<<<< HEAD
             records = cursor.rowcount
+=======
+            records = cursor.fetchone()
+>>>>>>> 14d0d55cdb09916cd3010e6f60de4313b1c6818b
     except mysql.connector.Error as e:
         return False
     finally:
@@ -78,9 +82,17 @@ def dbHas(taula, where, columns="*"):
     # where: string "column='valor'" (optional, sense filtre per defecte)
     # columns: string "columna-A,columnaB,columnaC" (optional, ALL per defecte)
     query = "select " + columns + " from " + taula + ' where ' + where
+<<<<<<< HEAD
     connexio = connectar(query,"has")
     if connexio > 0:
         answer = True
     else:
         answer = False
+=======
+    answer = connectar(query,"has")
+    if answer is None:
+        connexio = False
+    else:
+        connexio = True
+>>>>>>> 14d0d55cdb09916cd3010e6f60de4313b1c6818b
     return connexio

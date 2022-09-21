@@ -6510,6 +6510,12 @@ nav.sidebar-menu ul li a:hover {
 }
 .movie-wrap .movie-content .title a {
   color: #ffffff;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  width: 100%;
+  text-overflow: ellipsis;
 }
 .movie-wrap .movie-content .title a:hover {
   color: #f4181c;
@@ -7885,8 +7891,8 @@ nav.sidebar-menu ul li a:hover {
   text-align: right;
   margin: 0 0 0 15px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 100px;
-          flex: 0 0 100px;
+      -ms-flex: 0 0 150px;
+          flex: 0 0 150px;
 }
 @media only screen and (max-width: 767px) {
   .single-movielist .movielist-close {
