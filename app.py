@@ -4,7 +4,7 @@ from classes.functions import dateToYear
 from classes.private import atCredentials
 from flask_login import UserMixin
 # PROVES
-from classes.db import dbInsert,dbSelect,dbUpdate
+from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 from sqlalchemy import Column, Integer, String, Float
 
 # Importacions per LoginWithMicrosoft
@@ -64,10 +64,8 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    miid = session["user"].get("oid")
-    name = session["user"].get("name")
-    email = session["user"].get("preferred_username")
-    return render_template('prova.html',miid=miid,name=name,email=email)
+    userExists = dbHas('rompeflix_users',where="miid='6610bd4a-bf42-4bbb-ba1d-37ff91cba8f'")
+    return render_template('prova.html',miid=userExists)
 
 @app.route("/validar",methods=['POST'])
 def validar():
@@ -157,6 +155,10 @@ def authorized():
         if "error" in result:
             return render_template("auth_error.html", result=result)
         session["user"] = result.get("id_token_claims")
+        
+        userExists = dbHas('rompeflix_users',where="miid='"+session["user"].get("oid")+"'")
+        if not userExists:
+            dbInsert('rompeflix_users','miid,name,email',"'"+session["user"].get("oid")+"','"+session["user"].get("name")+"','"+session["user"].get("preferred_username")+"'")
         _save_cache(cache)
     except ValueError:
         pass
