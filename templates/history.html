@@ -44,26 +44,30 @@
                         </div>
                         <div class="movielist-wrap">
                             <!-- List of movies -->
-                            {% for item in content -%}
-                            <div class="single-movielist">
-                                <div class="movielist-img-content">
-                                    <div class="movielist-img">
-                                        <a href="{{ url_for('movieDetails', id=item[0]['id']) }}">
-                                            <img src="static/images/history/{{ item[0]['cover'] }}" alt="">
-                                            <i class="zmdi zmdi-play play-btn-style"></i>
-                                        </a>
+                            {% if initial == 0 %}
+                                {% for item in content -%}
+                                <div class="single-movielist">
+                                    <div class="movielist-img-content">
+                                        <div class="movielist-img">
+                                            <a href="{{ url_for('movieDetails', id=item[0]['id']) }}">
+                                                <img src="static/images/history/{{ item[0]['cover'] }}" alt="">
+                                                <i class="zmdi zmdi-play play-btn-style"></i>
+                                            </a>
+                                        </div>
+                                        <div class="movielist-content">
+                                            <h3 class="title"><a href="{{ url_for('movieDetails', id=item[0]['id']) }}">{{ item[0]['title'] }}</a></h3>
+                                            <p>{{ item[0]['squad'] }}</p>
+                                        </div>
                                     </div>
-                                    <div class="movielist-content">
-                                        <h3 class="title"><a href="{{ url_for('movieDetails', id=item[0]['id']) }}">{{ item[0]['title'] }}</a></h3>
-                                        <p>{{ item[0]['squad'] }}</p>
+                                    <div class="movielist-close">
+                                        <p>{{ item[1] }}</p>
+                                        <!--<a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>-->
                                     </div>
                                 </div>
-                                <div class="movielist-close">
-                                    <p>{{ item[1] }}</p>
-                                    <!--<a class="watchlist-close-btn" href="#"><i class="zmdi zmdi-close"></i></a>-->
-                                </div>
-                            </div>
-                            {% endfor %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="no-history">Your demoday history list is empty</div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

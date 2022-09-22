@@ -6,6 +6,7 @@ __pycache__/
 classes/__pycache__/
 classes/private.py
 env/
+env011h/
 flask_session/
 static/[suport]/
 templates/[suport]/
