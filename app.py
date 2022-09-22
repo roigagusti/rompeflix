@@ -46,6 +46,7 @@ class User(UserMixin):
 def low(str):
     return str.lower()
 def initials(longName):
+    print("/////////////////////"+longName)
     arrayName = longName.split(' ')
     initial = arrayName[0][0] + arrayName[1][0]
     return initial.upper()
@@ -84,23 +85,8 @@ def myList():
 
 @app.route("/prova")
 def prova():
-<<<<<<< HEAD
     print = session["user"]
     return render_template('prova.html',print=print)
-=======
-    userExists = dbHas('rompeflix_users',where="miid='6610bd4a-bf42-4bbb-ba1d-37ff91cba8f'")
-    return render_template('prova.html',miid=userExists)
-
-@app.route("/validar",methods=['POST'])
-def validar():
-    rtid = request.form['id']
-    name = request.form['name']
-    email = request.form['email']
-    #dbprova = dbInsert('rompeflix_users','miid,name,email',"'"+rtid+"','"+name+"','"+email+"'")
-    #dbprova = dbSelect('rompeflix_users','name,email',limit=2,offset=3)
-    #dbprova = dbUpdate('rompeflix_users',"name='"+name+"',email='"+email+"'","miid='gsfdgdsg'")
-    return redirect(url_for("prova"))
->>>>>>> 1e6e6b7190287f8233591018af2c6bab53a24811
 
 
 #-- PRODUCCIÓ --#
