@@ -41,11 +41,12 @@ class User(UserMixin):
         return "%d/%s/%s" % (self.id, self.name, self.password)
 
 # FUNCTIONS
-def low(a):
-    return a.lower()
-def initials(a):
-    x = a.split(' ')[0][0] + a.split(' ')[1][0]
-    return x.upper()
+def low(str):
+    return str.lower()
+def initials(longName):
+    arrayName = longName.split(' ')
+    initial = arrayName[0][0] + arrayName[1][0]
+    return initial.upper()
 
 
 ### APP ###
@@ -79,7 +80,7 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    print = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
+    print = session["user"]
     return render_template('prova.html',print=print)
 
 
