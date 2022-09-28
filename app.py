@@ -53,23 +53,6 @@ def initials(longName):
 
 ### APP ###
 #-- PROVES --#
-@app.route("/history")
-def history():
-    if not session.get("user"):
-        return redirect(url_for("login"))
-    username = session["user"].get("name")
-    initial = 0
-    history = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",limit=10)
-    demos = []
-    for item in history:
-        time = timeago.format(item[1], datetime.datetime.now())
-        demoday = at.record(item[0])
-        historyDemo = [demoday,time]
-        demos.append(historyDemo)
-    demos.sort(key=lambda x: x[1], reverse=False)
-    if len(demos) == 0:
-        initial = 1
-    return render_template('history.html',initial=initial,content=demos,user=username,initials=initials(username))
 @app.route("/my-list")
 def myList():
     favourite = dbSelect('rompeflix_favourites','media_id',"user_miid='1'",limit=10)
@@ -84,8 +67,8 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    print = session["user"]
-    return render_template('prova.html',print=print)
+    a = 'res a mostrar'
+    return render_template('prova.html',print=a)
 
 
 #-- PRODUCCIÓ --#
@@ -150,6 +133,30 @@ def components():
         return redirect(url_for("login"))
     username = session["user"].get("name")
     return render_template('category.html',user=username,initials=initials(username),sliderMain=sliderMain,demodays=demodays,title=title)
+
+# User Stuff
+@app.route("/history")
+def history():
+    if not session.get("user"):
+        return redirect(url_for("login"))
+    username = session["user"].get("name")
+    initial = 0
+    history = dbSelect('rompeflix_history','media_id,created',"user_miid='"+session["user"].get("oid")+"'",orderby='created DESC',limit=10)
+    demos = []
+    for item in history:
+        time = timeago.format(item[1], datetime.datetime.now())
+        demoday = at.record(item[0])
+        historyDemo = [demoday,time]
+        appendDemo = True
+        for demo in demos:
+            if demo[0].id == historyDemo[0].id:
+                appendDemo = False
+        if appendDemo:
+            demos.append(historyDemo)
+    if len(demos) == 0:
+        initial = 1
+    return render_template('history.html',initial=initial,content=demos,user=username,initials=initials(username))
+
 
 # Login Stuff
 @app.route("/login")

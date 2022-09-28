@@ -72,15 +72,15 @@ def dbUpdate(taula,values,where):
     connexio = connectar(query,"insert")
     return connexio
 
-def dbHas(taula, where, columns="*"):
+def dbHas(taula, where):
     # taula: string
     # columns: string "columna-A,columnaB,columnaC" (optional, ALL per defecte)
     # where: string "column='valor'" (optional, sense filtre per defecte)
     # columns: string "columna-A,columnaB,columnaC" (optional, ALL per defecte)
-    query = "select " + columns + " from " + taula + ' where ' + where
-    connexio = connectar(query,"has")
+    contact = dbSelect(taula,where=where)
+    connexio = len(contact)
     if connexio > 0:
         answer = True
     else:
         answer = False
-    return connexio
+    return answer

@@ -24,6 +24,15 @@
 
     <!-- Scripts Libraries -->
     <!-- Scripts custom -->
+    <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
+    <script>
+    function removeData(){
+        let streamVideo = document.getElementById('streamVideo');
+        let head = streamVideo.contentWindow.document.find("head");
+        let css = '<style>.overlayContainer-41{display:none;}</style>';
+        $(head).append(css);
+    }
+    </script>
 </head>
 
 <body>
@@ -39,7 +48,7 @@
             <div class="container">
                 <div class="movie-details-video-content-wrap">
                     <div class="video-wrap">
-                        <iframe width="100%" height="400" src="{{ data['video'] }}"
+                        <iframe width="100%" height="400" id="streamVideo" onload="removeData()" src="{{ data['video'] }}"
                         allowfullscreen style="border:none;"></iframe>
                     </div>
                     <div class="movie-details-content">
@@ -72,7 +81,6 @@
     {% include 'sections/footer.html' %}
 
     <!-- JavaScripts basics -->
-    <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>

@@ -23,5 +23,7 @@ function enlace_correo(a, b) {
 }
 
 /* ----- 2. Video ----- */
-$(document).ready(function(){
-)}
+function removeData(){
+	const streamVideo = document.getElementById('streamVideo');
+	streamVideo.remove();
+}
