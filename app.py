@@ -67,7 +67,8 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    a = 'res a mostrar'
+    name = "Sandra Regué"
+    a = initials(name)
     return render_template('prova.html',print=a)
 
 

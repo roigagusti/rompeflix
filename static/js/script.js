@@ -25,5 +25,5 @@ function enlace_correo(a, b) {
 /* ----- 2. Video ----- */
 function removeData(){
 	const streamVideo = document.getElementById('streamVideo');
-	streamVideo.remove();
+	streamVideo.contentWindow.remove('.overlayContainer-41');
 }
