@@ -46,7 +46,8 @@ class User(UserMixin):
 def low(str):
     return str.lower()
 def initials(longName):
-    arrayName = longName.split(' ')
+    name = longName.replace("  "," ")
+    arrayName = name.split(' ')
     initial = arrayName[0][0] + arrayName[1][0]
     return initial.upper()
 
@@ -67,8 +68,7 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    name = "Sandra Regué"
-    a = initials(name)
+    a = 'res a mostrar'
     return render_template('prova.html',print=a)
 
 
