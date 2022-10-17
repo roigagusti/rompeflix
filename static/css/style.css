@@ -38,6 +38,12 @@ Content table
 a.btn-signwith:hover{
     color: #fff !important;
 }
+.nav-not-link{
+    cursor:pointer;
+}
+.nav-not-link:hover{
+    color:#f4181c !important;
+}
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;
