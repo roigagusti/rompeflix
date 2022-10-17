@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, request, redirect, url_for
 from classes.Airtable import Airtable
 from classes.functions import dateToYear
 from classes.private import atCredentials
+from classes.cut import Object
 from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 #from sqlalchemy import Column, Integer, String, Float
 from flask_login import UserMixin
@@ -69,6 +70,11 @@ def myList():
 def prova():
     a = 'res a mostrar'
     return render_template('prova.html',print=a)
+
+@app.route("/optimizercut")
+def optimizercut():
+    a = 'res a mostrar'
+    return render_template('optimizercut.html',print=a)
 
 
 #-- PRODUCCIÓ --#
