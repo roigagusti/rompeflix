@@ -47,7 +47,8 @@ class User(UserMixin):
 def low(str):
     return str.lower()
 def initials(longName):
-    arrayName = longName.split(' ')
+    name = longName.replace("  "," ")
+    arrayName = name.split(' ')
     initial = arrayName[0][0] + arrayName[1][0]
     return initial.upper()
 
