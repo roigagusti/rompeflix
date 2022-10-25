@@ -1,17 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
+    <!-- Meta data -->
+    {% include 'sections/metadata.html' %}
+
+    <!-- Títol i Favicons -->
+    <title>Rompeflix. Ver demos en línea</title>
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap.min.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/material-design-iconic-font.min.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/plugins.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/modal-login.css") }}">
+    <script src="{{ url_for("static", filename="js/vendor/modernizr-3.6.0.min.js") }}"></script>
+    
+    <!-- CSS Custom -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css") }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/responsive.css") }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}" media="screen">
+
+    <!-- Scripts Libraries -->
+    <!-- Scripts custom -->
 </head>
+
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
-
-    <li><a href='{{ auth_url }}'>Sign In</a></li>
-
-    {% if config.get("B2C_RESET_PASSWORD_AUTHORITY") %}
-    <li><a href='{{_build_auth_code_flow(authority=config["B2C_RESET_PASSWORD_AUTHORITY"])["auth_uri"]}}'>Reset Password</a></li>
-    {% endif %}
-
-    <hr>
+    <div class="main-wrapper">
+        <header class="header-area inner-header section-padding-lr">
+            <div class="container-fluid">
+                <div class="row row-cols-lg-2 mb-n6 align-items-center">
+                    <div class="col mb-6">
+                        <div class="logo">
+                            <a href="{{ url_for('index') }}"><img src="{{ url_for("static", filename="images/logo-light_old.png") }}" alt="" style="height:40px"></a>
+                        </div>
+                    </div>
+                    <div class="col mb-6">
+                        <div class="sign-in-up-btn-wrap">
+                            <a href="{{ auth_url }}" class="sign-in-up-btn-style">
+                                Log in 
+                                <svg style="height: 15px;margin-left: 10px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path d="M1 1h10v10H1z"/><path d="M12 1h10v10H12z"/><path d="M1 12h10v10H1z"/><path d="M12 12h10v10H12z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="hero-landing-area" style="background-image:url(static/images/bg/bg-2.png);">
+            <div class="container">
+                <div class="landing-hero-content text-center">
+                    <h1 class="title">Demodays, tech releases and more.</h1>
+                    <h4 class="sub-title">Understand 011h anywhere. Let's start building</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal login -->
+    {% include 'sections/modal-login.html' %}
+    
+    <!-- JavaScripts basics -->
+    <script src="//app.cuantime.es/assets/libs/jquery/jquery.min.js"></script>
+    <script src="//app.cuantime.es/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/plugins.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/ajax-mail.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/main.js") }}"></script>
+    <!-- JavaScripts custom -->
+    <script src="{{ url_for("static", filename="js/script.js") }}"></script>
+    <!-- Scripts custom -->
 </body>
 </html>

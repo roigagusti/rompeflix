@@ -34,14 +34,6 @@ at = Airtable(token,base_id)
 
 
 # CLASSES
-class User(UserMixin):
-    def __init__(self, id):
-        self.id = id
-        self.name = '******'
-        self.password = '******'
-
-    def __repr__(self):
-        return "%d/%s/%s" % (self.id, self.name, self.password)
 
 # FUNCTIONS
 def low(str):
@@ -169,7 +161,7 @@ def history():
 @app.route("/login")
 def login():
     session["flow"] = _build_auth_code_flow(scopes=app_config.SCOPE)
-    return render_template("landing.html", auth_url=session["flow"]["auth_uri"])
+    return render_template("login.html", auth_url=session["flow"]["auth_uri"])
 
 @app.route(app_config.REDIRECT_PATH)
 def authorized():

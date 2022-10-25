@@ -9,14 +9,15 @@
 
 Content table
 --------------
-01. Correccions
+00. Correccions
+01. Login
 02. Footer
-03. Login
+03. History
 
 
 
 
-/* ----- 01. Correccions ----- */
+/* ----- 00. Correccions ----- */
 .Watch-list-btn{
     display: none !important;
 }
@@ -44,6 +45,11 @@ a.btn-signwith:hover{
 .nav-not-link:hover{
     color:#f4181c !important;
 }
+/* ----- 01. Login ----- */
+.sign-in-up-btn-style svg{
+    fill:#ffffff;
+}
+
 /* ----- 02. Footer ----- */
 .footer{
     width: 100%;
