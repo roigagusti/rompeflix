@@ -87,14 +87,13 @@ def dbHas(taula, where):
 
 
 class Demo():
-    def __init__(self, atid, title, image, cover, video, release, tag, status, staff, description1, description2, description3, image_position, category, area):
+    def __init__(self, atid, title, image, cover, video, release, status, staff, description1, description2, description3, image_position, category, area):
         self.id = atid  
         self.title = title
         self.image =  image
         self.cover = cover
         self.video = video
         self.release_date = release
-        self.tag = tag
         self.status = status
         self.staff = staff
         self.description1 = description1
@@ -109,7 +108,7 @@ class Rompetechos():
         self.tabla = tabla
 
     def list(self,maxrecords,formula=0,tag=0):
-        columns = "atid,title,main_image,cover_image,video,release_date,tag,estat,staff,main_image_position,description1,description2,description3,category,area,release_date"
+        columns = "atid,title,main_image,cover_image,video,release_date,estat,staff,main_image_position,description1,description2,description3,category,area,release_date"
         if formula != 0 and tag != 0:
             filtre = "%s='%s'" % (formula,tag)
         else:
@@ -124,15 +123,14 @@ class Rompetechos():
                 cover_image = record[3]
                 video = record[4]
                 release_date = record[5]
-                tag = record[6]
-                estat = record[7]
-                staff = record[8]
-                main_image_position = record[9]
-                description1 = record[10]
-                description2 = record[11]
-                description3 = record[12]
-                category = record[13]
-                area = record[14]
+                estat = record[6]
+                staff = record[7]
+                main_image_position = record[8]
+                description1 = record[9]
+                description2 = record[10]
+                description3 = record[11]
+                category = record[12]
+                area = record[13]
                 demo = Demo(
                     atid,
                     title,
@@ -140,7 +138,6 @@ class Rompetechos():
                     cover_image,
                     video,
                     release_date,
-                    tag,
                     estat,
                     staff,
                     description1,
@@ -156,7 +153,7 @@ class Rompetechos():
         return records
 
     def record(self,atid):
-        columns = "atid,title,main_image,cover_image,video,release_date,tag,estat,staff,main_image_position,description1,description2,description3,category,area"
+        columns = "atid,title,main_image,cover_image,video,release_date,estat,staff,main_image_position,description1,description2,description3,category,area"
         filtre = "%s='%s'" % ('atid',atid)
         data = dbSelect(self.tabla,columns=columns,where=filtre,limit=1)
         singleData = data[0]
@@ -167,15 +164,14 @@ class Rompetechos():
         cover_image = singleData[3]
         video = singleData[4]
         release_date = singleData[5]
-        tag = singleData[6]
-        estat = singleData[7]
-        staff = singleData[8]
-        main_image_position = singleData[9]
-        description1 = singleData[10]
-        description2 = singleData[11]
-        description3 = singleData[12]
-        category = singleData[13]
-        area = singleData[14]
+        estat = singleData[6]
+        staff = singleData[7]
+        main_image_position = singleData[8]
+        description1 = singleData[9]
+        description2 = singleData[10]
+        description3 = singleData[11]
+        category = singleData[12]
+        area = singleData[13]
         demo = Demo(
             atid,
             title,
@@ -183,7 +179,6 @@ class Rompetechos():
             cover_image,
             video,
             release_date,
-            tag,
             estat,
             staff,
             description1,
@@ -196,7 +191,7 @@ class Rompetechos():
         return demo
     
     def search(self,parameter,data):
-        columns = "atid,title,main_image,cover_image,video,release_date,tag,estat,staff,main_image_position,description1,description2,description3,category,area"
+        columns = "atid,title,main_image,cover_image,video,release_date,estat,staff,main_image_position,description1,description2,description3,category,area"
         filtre = "%s='%s'" % (parameter,data)
         data = dbSelect(self.tabla,columns=columns,where=filtre)
         records = []
@@ -207,15 +202,14 @@ class Rompetechos():
             cover_image = record[3]
             video = record[4]
             release_date = record[5]
-            tag = record[6]
-            estat = record[7]
-            staff = record[8]
-            main_image_position = record[9]
-            description1 = record[10]
-            description2 = record[11]
-            description3 = record[12]
-            category = record[13]
-            area = record[14]
+            estat = record[6]
+            staff = record[7]
+            main_image_position = record[8]
+            description1 = record[9]
+            description2 = record[10]
+            description3 = record[11]
+            category = record[12]
+            area = record[13]
             demo = Demo(
                 atid,
                 title,
@@ -223,7 +217,6 @@ class Rompetechos():
                 cover_image,
                 video,
                 release_date,
-                tag,
                 estat,
                 staff,
                 description1,
