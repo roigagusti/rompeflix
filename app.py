@@ -1,14 +1,11 @@
 from flask import Flask, render_template, session, request, redirect, url_for
-from classes.Airtable import Airtable
 from classes.functions import dateToYear
 from classes.private import atCredentials
-from classes.cut import Object
-from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
 #from sqlalchemy import Column, Integer, String, Float
 from flask_login import UserMixin
 import timeago, datetime
 # PROVES
-from classes.db import dbInsert,dbSelect,dbUpdate,dbHas
+from classes.db import dbInsert,dbSelect,dbUpdate,dbHas,Rompetechos
 from sqlalchemy import Column, Integer, String, Float
 
 # Importacions per LoginWithMicrosoft
@@ -29,7 +26,8 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 # Iniciem la base de dades
 token,base_id = atCredentials()
-at = Airtable(token,base_id)
+#at = Airtable(token,base_id)
+rt = Rompetechos('rompeflix_media')
 
 
 
@@ -52,7 +50,7 @@ def myList():
     favourite = dbSelect('rompeflix_favourites','media_id',"user_miid='1'",limit=10)
     demos = []
     for item in favourite:
-        demoday = at.record(item[0])
+        demoday = rt.record(item[0])
         demos.append(demoday)
     if not session.get("user"):
         return redirect(url_for("login"))
@@ -61,41 +59,38 @@ def myList():
 
 @app.route("/prova")
 def prova():
-    a = 'res a mostrar'
+    # a = dbSelect('rompeflix_media',columns='title',limit=5)
+    o = rt.record('rec4gB7eL8CnfLKWT')
+    a = [o.id,o.staff,o.description1,o.description2,o.description3]
     return render_template('prova.html',print=a)
-
-@app.route("/optimizercut")
-def optimizercut():
-    a = 'res a mostrar'
-    return render_template('optimizercut.html',print=a)
 
 
 #-- PRODUCCIÓ --#
 @app.route("/",methods=['GET'])
 def index():
     resposta = []
-    sliderMain = at.list(4,'slider_main','Yes')
-    lastestReleases = at.list(7,'last_release','Yes')
-    demoday = at.list(50,'tag','Demoday')
-    techdemo = at.list(50,'tag','Tech demo')
-    components = at.list(50,'tag','Components demo')
+    sliderMain = rt.list(4,'slider_main','Yes')
+    lastestReleases = rt.list(8)
+    demoday = rt.list(50,'category','Demoday')
+    tech = rt.list(50,'area','IT')
+    buildingsystem = rt.list(50,'area','Building System')
     if request.args.get('q'):
         query = low(request.args.get('q'))
-        find = at.list(500, 'status', 'active')
+        find = rt.list(500, 'estat', 'active')
         for record in find:
             if query in low(record.title):
                 resposta.append(record)
-            elif query in low(record.squad):
+            elif query in low(record.area):
                 resposta.append(record)
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('home.html',user=username,initials=initials(username),sliderMain=sliderMain,lastestReleases=lastestReleases,demoday=demoday,techdemo=techdemo,components=components,resposta=resposta)
+    return render_template('home.html',user=username,initials=initials(username),sliderMain=sliderMain,lastestReleases=lastestReleases,demoday=demoday,tech=tech,buildingsystem=buildingsystem,resposta=resposta)
 
 @app.route('/movie-details',methods=['GET'])
 def movieDetails():
     atid = request.args.get('id')
-    data = at.record(atid)
+    data = rt.record(atid)
     year = dateToYear(data.release_date)
     if not session.get("user"):
         return redirect(url_for("login"))
@@ -103,35 +98,44 @@ def movieDetails():
     history = dbInsert('rompeflix_history','user_miid,media_id',"'"+session["user"].get("oid")+"','"+atid+"'")
     return render_template('movie-details.html',user=username,initials=initials(username),data=data,year=year)
 
+# Demodays
 @app.route('/demodays',methods=['GET'])
 def demoDays():
-    sliderMain = at.list(4,'slider_main','Yes')
-    demodays = at.list(500,'tag','Demoday')
+    demodays = rt.list(500,'category','Demoday')
     title = 'Demodays'
+    initial = 0
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('category.html',user=username,initials=initials(username),sliderMain=sliderMain,demodays=demodays,title=title)
+    return render_template('category.html',initial=initial,user=username,initials=initials(username),demodays=demodays,title=title)
 
-@app.route('/tech-releases',methods=['GET'])
-def techReleases():
-    sliderMain = at.list(4,'slider_main','Yes')
-    demodays = at.list(500,'tag','Tech demo')
-    title = 'Tech releases'
+# Area content
+@app.route('/content-<area>',methods=['GET'])
+def areaContent(area):
+    categoryArea = 'Content area-'+area
+    content = rt.list(500,'categoryArea',categoryArea)
+    title = 'Area content. '+ area
+    initial = 0
+    if len(content) == 0:
+        initial = 1
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('category.html',user=username,initials=initials(username),sliderMain=sliderMain,demodays=demodays,title=title)
+    return render_template('category.html',initial=initial,user=username,initials=initials(username),demodays=content,title=title)
 
-@app.route('/components',methods=['GET'])
-def components():
-    sliderMain = at.list(4,'slider_main','Yes')
-    demodays = at.list(500,'tag','Components demo')
-    title = 'Components'
+# Company trainings
+@app.route('/trainings',methods=['GET'])
+def trainings():
+    # LPS
+    area = 'LPS'
+    categoryArea = 'Training-'+area
+    lps = rt.list(500,'categoryArea',categoryArea)
+    initial = 0
     if not session.get("user"):
         return redirect(url_for("login"))
     username = session["user"].get("name")
-    return render_template('category.html',user=username,initials=initials(username),sliderMain=sliderMain,demodays=demodays,title=title)
+    return render_template('training.html',initial=initial,user=username,initials=initials(username),lps=lps)
+
 
 # User Stuff
 @app.route("/history")
@@ -144,7 +148,7 @@ def history():
     demos = []
     for item in history:
         time = timeago.format(item[1], datetime.datetime.now())
-        demoday = at.record(item[0])
+        demoday = rt.record(item[0])
         historyDemo = [demoday,time]
         appendDemo = True
         for demo in demos:

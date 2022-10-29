@@ -25,6 +25,18 @@
     <!-- Scripts Libraries -->
     <!-- Scripts custom -->
     <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
+    <script>
+    function removeData(){
+        foo = document.getElementsByClassName('overlayContainer-41');
+        for (var i = foo.length - 1; i >= 0; --i) {
+            foo[i].remove();
+        }
+        /*setTimeout(function(){
+            document.getElementsByClassName('overlayContainer-41')[0].remove();
+            $("#streamVideo").contents().find(".overlayContainer-41")[0].remove();
+        }, 3000);*/
+    };
+    </script>
 </head>
 
 <body>
@@ -68,13 +80,7 @@
                         <div class="movie-details-info">
                             <ul>
                                 <li><span>Starring: </span>
-                                    {% set i = 0 -%}
-                                    {% for item in data['staff'] -%}
-                                        {{ item }}
-                                        {% if not loop.last %}
-                                            ,
-                                        {% endif %}
-                                    {% endfor %}
+                                    {{ data['staff'] }}
                                 </li>
                             </ul>
                         </div>
@@ -103,12 +109,5 @@
     <!-- JavaScripts custom -->
     <script src="{{ url_for("static", filename="js/script.js") }}"></script>
     <!-- Scripts custom -->
-    <script>
-    function removeData(){
-        setTimeout(function(){
-            document.getElementsByClassName('overlayContainer-41')[0].remove();
-        }, 10000);
-    };
-    </script>
 </body>
 </html>

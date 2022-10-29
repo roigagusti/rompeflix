@@ -5,30 +5,34 @@
         </div>
 
         <div class="row">
-            
-            {% for item in content -%}
-            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-12">
-                <div class="movie-wrap text-center mb-30">
-                    <div class="movie-img">
-                        <a href="{{ url_for('movieDetails', id=item['id']) }}"><img src="static/images/product/top/{{ item['cover'] }}" alt=""></a>
-                        <button title="Watchlist" class="Watch-list-btn" type="button"><i class="zmdi zmdi-plus"></i></button> 
-                    </div>
-                    <div class="movie-content">
-                        <h3 class="title"><a href="{{ url_for('movieDetails', id=item['id']) }}">{{ item['title'] }}</a></h3>
-                        <!-- {% if item['season'] == 0 -%}
-                            <span>Película</span>
-                        {% else -%}
-                            <span>Temporada {{ item['season'] }}</span>
-                        {% endif -%} -->
-                        <span>{{ item['squad']}}</span>
-                        
-                        <div class="movie-btn">
-                            <a href="{{ url_for('movieDetails', id=item['id']) }}" class="btn-style-hm4-2 animated">Watch Now</a>
+            <!-- List of movies -->
+            {% if content|length > 0 %}
+                {% for item in content -%}
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-12">
+                    <div class="movie-wrap text-center mb-30">
+                        <div class="movie-img">
+                            <a href="{{ url_for('movieDetails', id=item['id']) }}"><img src="static/images/product/top/{{ item['cover'] }}" alt=""></a>
+                            <button title="Watchlist" class="Watch-list-btn" type="button"><i class="zmdi zmdi-plus"></i></button> 
+                        </div>
+                        <div class="movie-content">
+                            <h3 class="title"><a href="{{ url_for('movieDetails', id=item['id']) }}">{{ item['title'] }}</a></h3>
+                            <!-- {% if item['season'] == 0 -%}
+                                <span>Película</span>
+                            {% else -%}
+                                <span>Temporada {{ item['season'] }}</span>
+                            {% endif -%} -->
+                            <span>{{ item['area']}}</span>
+                            
+                            <div class="movie-btn">
+                                <a href="{{ url_for('movieDetails', id=item['id']) }}" class="btn-style-hm4-2 animated">Watch Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <div class="no-history">Environmental pollution free because there is no content yet charging our server</div>
+            {% endif %}
         </div>
     </div>
 </div>

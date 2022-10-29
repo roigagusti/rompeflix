@@ -4,8 +4,9 @@
             <h2>{{ title }}</h2>
         </div>
         
+        {% if content|length > 0 %}
         <div class="movie-slider-active nav-style-2">
-
+            <!-- List of movies -->
             {% for item in content -%}
             <div class="movie-wrap-plr">
                 <div class="movie-wrap text-center">
@@ -20,7 +21,7 @@
                         {% else -%}
                             <span>Temporada {{ item['season'] }}</span>
                         {% endif -%} -->
-                        <span>{{ item['squad']}}</span>
+                        <span>{{ item['area']}}</span>
                         
                         <div class="movie-btn">
                             <a href="{{ url_for('movieDetails', id=item['id']) }}" class="btn-style-hm4-2 animated">Watch Now</a>
@@ -29,7 +30,10 @@
                 </div>
             </div>
             {% endfor %}
-
         </div>
+        
+        {% else %}
+            <div class="no-history">Environmental pollution free because there is no content yet charging our server</div>
+        {% endif %}
     </div>
 </div>

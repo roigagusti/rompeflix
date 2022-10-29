@@ -30,16 +30,16 @@
         <!-- Header -->
         {% include 'sections/header.html' %}
 
-        <!-- Slider -->
-        <span style="color:#fff">DB-prova: {{ print }}</span><br>
+        <!-- Slider: Training LPS -->
+        {% set content = lps %}
+        {% set title = 'Training. LPS' %}
+        {% include 'sections/slider-content.html' %}
     </div>
 
     <!-- Footer -->
     {% include 'sections/footer.html' %}
 
     <!-- JavaScripts basics -->
-    <script src="//app.cuantime.es/assets/libs/jquery/jquery.min.js"></script>
-    <script src="//app.cuantime.es/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
