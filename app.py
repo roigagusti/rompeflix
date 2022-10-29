@@ -1,16 +1,12 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 from classes.functions import dateToYear
 from classes.private import atCredentials
-#from sqlalchemy import Column, Integer, String, Float
-from flask_login import UserMixin
+from classes.db import dbInsert,dbSelect,dbUpdate,dbHas,Rompetechos
 import timeago, datetime
 # PROVES
-from classes.db import dbInsert,dbSelect,dbUpdate,dbHas,Rompetechos
-from sqlalchemy import Column, Integer, String, Float
 
 # Importacions per LoginWithMicrosoft
 import requests
-from flask import Flask, render_template, session, request, redirect, url_for
 from flask_session import Session
 import app_config
 from classes.functionsMicrosoft import _load_cache, _save_cache, _build_msal_app, _build_auth_code_flow, _get_token_from_cache
