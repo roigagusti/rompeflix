@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, select, MetaData, Table
 def dateToYear(numero):
     string = str(numero)
     date = datetime.datetime.strptime(string,"%Y-%m-%d %H:%M:%S")
-    year = date.strftime("%b %Y")
+    year = date.strftime("%B %Y")
     return year
 
 def connectRT():

@@ -6424,8 +6424,8 @@ nav.sidebar-menu ul li a:hover {
   overflow: hidden;
 }
 .movie-wrap > .movie-img::before {
-  background: rgba(0, 0, 0, 0) -webkit-gradient(linear, left bottom, left top, color-stop(25%, #072e4a), color-stop(60%, transparent)) repeat scroll 0% 0%;
-  background: rgba(0, 0, 0, 0) linear-gradient(to top, #072e4a 25%, transparent 60%) repeat scroll 0% 0%;
+  /*background: rgba(0, 0, 0, 0) -webkit-gradient(linear, left bottom, left top, color-stop(25%, #072e4a), color-stop(60%, transparent)) repeat scroll 0% 0%;
+  background: rgba(0, 0, 0, 0) linear-gradient(to top, #072e4a 25%, transparent 60%) repeat scroll 0% 0%;*/
   bottom: 0;
   content: "";
   left: 0;
@@ -6436,10 +6436,10 @@ nav.sidebar-menu ul li a:hover {
   z-index: 2;
   pointer-events: none;
   border-radius: 10px;
-  -webkit-transition: all 0.3s ease 0s;
+  /*-webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   -webkit-transform: translate3d(0px, 50%, 0px);
-          transform: translate3d(0px, 50%, 0px);
+          transform: translate3d(0px, 50%, 0px);*/
 }
 .movie-wrap > .movie-img > a {
   display: block;
