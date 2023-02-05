@@ -43,13 +43,13 @@ def initials(longName):
 #-- PROVES --#
 @app.route("/my-list")
 def myList():
+    if not session.get("user"):
+        return redirect(url_for("login"))
     favourite = dbSelect('rompeflix_favourites','media_id',"user_miid='1'",limit=10)
     demos = []
     for item in favourite:
         demoday = rt.record(item[0])
         demos.append(demoday)
-    if not session.get("user"):
-        return redirect(url_for("login"))
     username = session["user"].get("name")
     return render_template('my-list.html',content=demos,user=username,initials=initials(username))
 
@@ -98,38 +98,38 @@ def movieDetails():
 # Demodays
 @app.route('/demodays',methods=['GET'])
 def demoDays():
+    if not session.get("user"):
+        return redirect(url_for("login"))
     demodays = rt.list(500,'category','Demoday')
     title = 'Demodays'
     initial = 0
-    if not session.get("user"):
-        return redirect(url_for("login"))
     username = session["user"].get("name")
     return render_template('category.html',initial=initial,user=username,initials=initials(username),demodays=demodays,title=title)
 
 # Area content
 @app.route('/content-<area>',methods=['GET'])
 def areaContent(area):
+    if not session.get("user"):
+        return redirect(url_for("login"))
     categoryArea = 'Content area-'+area
     content = rt.list(500,'categoryArea',categoryArea)
     title = 'Area content. '+ area
     initial = 0
     if len(content) == 0:
         initial = 1
-    if not session.get("user"):
-        return redirect(url_for("login"))
     username = session["user"].get("name")
     return render_template('category.html',initial=initial,user=username,initials=initials(username),demodays=content,title=title)
 
 # Company trainings
 @app.route('/trainings',methods=['GET'])
 def trainings():
+    if not session.get("user"):
+        return redirect(url_for("login"))
     # LPS
     area = 'LPS'
     categoryArea = 'Training-'+area
     lps = rt.list(500,'categoryArea',categoryArea)
     initial = 0
-    if not session.get("user"):
-        return redirect(url_for("login"))
     username = session["user"].get("name")
     return render_template('training.html',initial=initial,user=username,initials=initials(username),lps=lps)
 
