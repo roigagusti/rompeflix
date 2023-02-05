@@ -64,7 +64,7 @@ def prova():
 
 @app.route("/prova2")
 def prova2():
-    demodays = rt.list(5,'category','Demoday')
+    demodays = rt.list(500,'category','Demoday')
     title = 'Demodays'
     initial = 0
     username = 'Agustí Roig'
