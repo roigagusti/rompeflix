@@ -56,9 +56,10 @@ def myList():
 @app.route("/prova")
 def prova():
     # a = dbSelect('rompeflix_media',columns='title',limit=5)
-    o = rt.record('rec4gB7eL8CnfLKWT')
-    a = [o.id,o.staff,o.description1,o.description2,o.description3]
-    return render_template('prova.html',print=a)
+    # o = rt.record('rec4gB7eL8CnfLKWT')
+    # a = [o.id,o.staff,o.description1,o.description2,o.description3]
+    b = "hello"
+    return render_template('prova.html',print=b)
 
 
 #-- PRODUCCIÓ --#
