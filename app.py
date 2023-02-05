@@ -62,15 +62,6 @@ def prova():
     return render_template('prova.html',print=b)
 
 
-@app.route("/prova2")
-def prova2():
-    demodays = rt.list(500,'category','Demoday')
-    title = 'Demodays'
-    initial = 0
-    username = 'Agustí Roig'
-    return render_template('category.html',initial=initial,user=username,initials=initials(username),demodays=demodays,title=title)
-
-
 #-- PRODUCCIÓ --#
 @app.route("/",methods=['GET'])
 def index():
