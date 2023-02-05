@@ -12,13 +12,13 @@
     <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="{{ url_for("static", filename="css/bootstrap.min.css") }}">
     <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="{{ url_for("static", filename="css/material-design-iconic-font.min.css") }}">
     <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="{{ url_for("static", filename="css/plugins.css") }}">
-    <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="//www.mesural.com/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="{{ url_for("static", filename="css/bootstrap.css") }}">
     <script src="{{ url_for("static", filename="js/vendor/modernizr-3.6.0.min.js") }}" defer></script>
     <noscript>
         <link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap.min.css") }}">
         <link rel="stylesheet" href="{{ url_for("static", filename="css/material-design-iconic-font.min.css") }}">
         <link rel="stylesheet" href="{{ url_for("static", filename="css/plugins.css") }}">
-        <link rel="stylesheet" href="{{ url_for("static", filename="//www.mesural.com/lib/bootstrap/bootstrap.css") }}">
+        <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="{{ url_for("static", filename="css/bootstrap.css") }}">
     </noscript>
     
     <!-- CSS Custom -->
@@ -44,7 +44,6 @@
     {% include 'sections/footer.html' %}
 
     <!-- JavaScripts basics -->
-    <script src="{{ url_for("static", filename="js/vendor/jquery-3.5.1.min.js") }}" defer></script>
     <script src="{{ url_for("static", filename="js/vendor/jquery-migrate-3.3.0.min.js") }}" defer></script>
     <script src="{{ url_for("static", filename="js/popper.min.js") }}" defer></script>
     <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}" defer></script>
