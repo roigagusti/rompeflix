@@ -75,7 +75,7 @@ def index():
     buildingsystem = rt.list(50,'area','Building System')
     if request.args.get('q'):
         query = low(request.args.get('q'))
-        find = rt.list(500, 'estat', 'active')
+        find = rt.list(50, 'estat', 'active')
         for record in find:
             if query in low(record.title):
                 resposta.append(record)
