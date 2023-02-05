@@ -65,6 +65,8 @@ def prova():
 #-- PRODUCCIÓ --#
 @app.route("/",methods=['GET'])
 def index():
+    if not session.get("user"):
+        return redirect(url_for("login"))
     resposta = []
     sliderMain = rt.list(4,'slider_main','Yes')
     lastestReleases = rt.list(8)
@@ -79,8 +81,6 @@ def index():
                 resposta.append(record)
             elif query in low(record.area):
                 resposta.append(record)
-    if not session.get("user"):
-        return redirect(url_for("login"))
     username = session["user"].get("name")
     return render_template('home.html',user=username,initials=initials(username),sliderMain=sliderMain,lastestReleases=lastestReleases,demoday=demoday,tech=tech,buildingsystem=buildingsystem,resposta=resposta)
 
