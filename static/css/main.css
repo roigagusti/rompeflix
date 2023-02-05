@@ -43,6 +43,10 @@
 /*  01. Theme default CSS
 /*----------------------------------------*/
 /*-- Google Font --*/
+@font-face{
+  font-family:Poppins;
+  src: url(../fonts/poppins.woff2) format('woff2')
+}
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900");
 /*-- Common Style --*/
 *, *::after, *::before {
