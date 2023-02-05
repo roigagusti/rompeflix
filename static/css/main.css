@@ -61,6 +61,7 @@ html, body {
 body {
   background-color: #000;
   font-family: "Poppins", sans-serif;
+  font-display:"swap";
   line-height: 28px;
   font-size: 14px;
   font-style: normal;
@@ -74,6 +75,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin-top: 0;
   font-family: "Poppins", sans-serif;
+  font-display:"swap";
 }
 
 h1 {
@@ -171,6 +173,7 @@ p:last-child {
 
 p {
   font-family: "Poppins", sans-serif;
+  font-display:"swap";
 }
 
 a, button {
