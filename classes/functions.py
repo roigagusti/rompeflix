@@ -24,3 +24,15 @@ def get_table(table):
     engine = connectRT()
     table = Table(table, metadata, autoload=True, autoload_with=engine)
     return table
+    
+def youtubeCode(url):
+    if "youtube.com" in url:
+        video_id = url.split("v=")[1]
+        ampersand_pos = video_id.find("&")
+        if ampersand_pos != -1:
+            video_id = video_id[:ampersand_pos]
+    elif "youtu.be" in url:
+        video_id = url.split("/")[-1]
+    else:
+        video_id = url
+    return video_id
