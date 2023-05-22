@@ -40,7 +40,7 @@ def initials(longName):
 
 
 ### APP ###
-#-- PROVES --#
+#-- PROVES EN DEV --#
 @app.route("/my-list")
 def myList():
     if not session.get("user"):
