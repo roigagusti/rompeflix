@@ -63,8 +63,8 @@ def index():
     sliderMain = rt.list(4,'slider_main','Yes')
     lastestReleases = rt.list(8)
     demoday = rt.list(50,'category','Demoday')
-    tech = rt.list(50,'area','IT')
-    buildingsystem = rt.list(50,'area','Building System')
+    tech = rt.list(50,'area','Tech')
+    buildingsystem = rt.list(50,'area','Design')
     if request.args.get('q'):
         query = low(request.args.get('q'))
         find = rt.list(50, 'estat', 'active')
