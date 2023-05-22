@@ -62,11 +62,11 @@ def index():
     resposta = []
     sliderMain = rt.list(4,'slider_main','Yes')
     lastestReleases = rt.list(8)
-    demoday = rt.list(50,'category','Demoday')
-    tech = rt.list(50,'area','Tech')
+    demoday = rt.list(15,'category','Demoday')
+    tech = rt.list(15,'area','Tech')
     if request.args.get('q'):
         query = low(request.args.get('q'))
-        find = rt.list(50, 'estat', 'active')
+        find = rt.list(15, 'estat', 'active')
         for record in find:
             if query in low(record.title):
                 resposta.append(record)
